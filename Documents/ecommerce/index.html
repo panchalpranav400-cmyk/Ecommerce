@@ -1,662 +1,535 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="DRIPIO - The ultimate Gen Z clothing store. W fits, streetwear grails, and limited drops. No cap, just drip.">
-  <title>DRIPIO // NO CAP STREETWEAR</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <title>Vortex Games | Next-Gen Online PC Game Store</title>
+  <meta name="description" content="Discover and purchase the best online PC games on Vortex. High speed delivery, epic discounts, and immediate access keys.">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="index.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- DYNAMIC SCROLLING MARQUEE -->
-  <div class="announcement-bar">
-    <div class="marquee-track">
-      <div class="marquee-content">
-        THE DROP IS LIVE • USE CODE <span>BUSSIN30</span> FOR 30% OFF • FREE SHIPPING ON FITS OVER $75 • W AESTHETICS ONLY • NO CAP STREETWEAR • THE DROP IS LIVE • USE CODE <span>BUSSIN30</span> FOR 30% OFF • FREE SHIPPING ON FITS OVER $75 • W AESTHETICS ONLY • NO CAP STREETWEAR •
-      </div>
-    </div>
-  </div>
-
-  <!-- FLOATING NAVIGATION HEADER -->
-  <header class="header">
-    <div class="container header-container">
-      <a href="#" class="logo">
-        <span class="logo-text">DRIPIO</span>
-        <div class="logo-dot"></div>
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo" id="logoLink">
+        <div class="logo-vortex"></div>
+        <span>Vortex</span>
       </a>
-      
-      <nav class="nav-links">
-        <a href="#hero" class="nav-link">Home</a>
-        <a href="#quiz" class="nav-link">Vibe Checker</a>
-        <a href="#shop" class="nav-link">Shop</a>
-        <a href="#lookbook" class="nav-link">Lookbook</a>
-        <a href="#reviews" class="nav-link">Vibe Check</a>
+
+      <!-- Search Bar in Header -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search games by title, genre, publisher...">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav>
+        <ul class="nav-links">
+          <li><a class="nav-link active" id="navStoreBtn"><i class="fa-solid fa-gamepad"></i> Store</a></li>
+          <li><a class="nav-link" id="navLibraryBtn"><i class="fa-solid fa-folder-open"></i> My Library</a></li>
+        </ul>
       </nav>
 
-      <div class="header-actions">
-        <button class="icon-btn" id="searchToggleBtn" aria-label="Search Catalog">
-          <i data-lucide="search"></i>
-        </button>
-        <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Theme">
-          <i data-lucide="sun" id="sun-icon"></i>
-          <i data-lucide="moon" id="moon-icon" style="display: none;"></i>
-        </button>
-        <button class="cart-btn" id="cartToggleBtn" aria-label="Shopping Cart">
-          <div class="cart-btn-content">
-            <i data-lucide="shopping-bag"></i>
-            <span class="cart-badge" id="cartBadge">0</span>
-          </div>
+      <!-- Cart Trigger & Actions -->
+      <div class="nav-actions">
+        <button class="cart-icon-btn" id="cartToggleBtn" aria-label="Open shopping cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cartBadgeCount">0</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION WITH COUNTDOWN -->
-  <section class="hero" id="hero">
-    <div class="grid-backdrop"></div>
-    <div class="glow-orb red-glow"></div>
-    <div class="glow-orb blue-glow"></div>
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main Content Wrapper -->
+  <main>
     
-    <div class="container hero-container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i data-lucide="sparkles"></i> NEXT DROP COUNTDOWN
+    <!-- STORE PAGE LAYOUT -->
+    <div id="storePage">
+      
+      <!-- Featured Hero Banner Section -->
+      <section class="hero-section" id="heroBanner">
+        <div class="cyber-grid"></div>
+        <div class="hero-visual-fallback" id="heroVisual"></div>
+        <div class="hero-content">
+          <span class="hero-tag" id="heroTag">Featured Release</span>
+          <h1 class="hero-title" id="heroTitle">NEON HORIZON 2088</h1>
+          <p class="hero-desc" id="heroDesc">Dive deep into the glowing cyberpunk underbelly of Neo-Detroit in this critically acclaimed open-world action RPG.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="heroBuyBtn">
+              <i class="fa-solid fa-cart-plus"></i> Buy Now - <span id="heroPrice">$29.99</span>
+            </button>
+            <button class="btn btn-secondary" id="heroInfoBtn">
+              <i class="fa-solid fa-circle-info"></i> More Info
+            </button>
+          </div>
         </div>
-        <h1 class="hero-title">
-          WEAR THE <span class="gradient-text">FUTURE</span>.<br>NO CAP.
-        </h1>
+      </section>
+
+      <!-- Split Store Grid (Filters Sidebar + Game Grid) -->
+      <div class="store-layout">
         
-        <!-- Live countdown timer -->
-        <div class="countdown-timer" id="dropTimer">
-          <div class="time-block">
-            <span class="time-num" id="days">00</span>
-            <span class="time-label">DAYS</span>
-          </div>
-          <div class="time-divider">:</div>
-          <div class="time-block">
-            <span class="time-num" id="hours">00</span>
-            <span class="time-label">HRS</span>
-          </div>
-          <div class="time-divider">:</div>
-          <div class="time-block">
-            <span class="time-num" id="minutes">00</span>
-            <span class="time-label">MINS</span>
-          </div>
-          <div class="time-divider">:</div>
-          <div class="time-block">
-            <span class="time-num" id="seconds">00</span>
-            <span class="time-label">SECS</span>
-          </div>
-        </div>
-
-        <p class="hero-subtitle">
-          Highly limited releases. Curated styles for the bold. Find your aesthetic, unlock W fits, and claim your status.
-        </p>
-        <div class="hero-actions">
-          <a href="#shop" class="btn btn-primary glow-btn">
-            Shop the Drop <i data-lucide="arrow-right"></i>
-          </a>
-          <a href="#quiz" class="btn btn-outline">
-            Find Your Vibe <i data-lucide="help-circle"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STYLE QUIZ (VIBE CHECK) -->
-  <section class="quiz-section" id="quiz">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">AI VIBE CHECKER</span>
-        <h2 class="section-title">What's Your Wardrobe Aesthetic?</h2>
-        <p class="section-subtitle">Take our quick vibe check quiz to get recommended streetwear tailored to your exact wavelength.</p>
-      </div>
-
-      <div class="quiz-card-wrapper">
-        <div class="quiz-progress-bar">
-          <div class="progress-fill" id="quizProgress" style="width: 25%;"></div>
-        </div>
-
-        <div class="quiz-card" id="quizCard">
-          <!-- Slide 1: Welcome -->
-          <div class="quiz-slide active" id="slide-welcome">
-            <div class="quiz-icon"><i data-lucide="sparkles"></i></div>
-            <h3>Discover Your Style Identity</h3>
-            <p>Answer 3 quick questions about your lifestyle and fashion preferences. We will filter the catalog and curate a personalized aesthetic vibe for you.</p>
-            <button class="btn btn-primary" onclick="nextQuizStep(1)">Get Started</button>
-          </div>
-
-          <!-- Slide 2: Question 1 -->
-          <div class="quiz-slide" id="slide-q1">
-            <span class="quiz-q-num">Question 1 of 3</span>
-            <h3>What is your go-to weekend mood?</h3>
-            <div class="quiz-options">
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q1', 'cyberpunk', 2)">
-                <span class="opt-label">A</span> Rave clubs, techno, arcade lounges
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q1', 'streetwear', 2)">
-                <span class="opt-label">B</span> Skateparks, thrift stores, local gigs
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q1', 'y2k', 2)">
-                <span class="opt-label">C</span> Mall crawls, retro game consoles, music festivals
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q1', 'minimalist', 2)">
-                <span class="opt-label">D</span> Art galleries, study cafes, coding in coffee shops
-              </button>
-            </div>
-          </div>
-
-          <!-- Slide 3: Question 2 -->
-          <div class="quiz-slide" id="slide-q2">
-            <span class="quiz-q-num">Question 2 of 3</span>
-            <h3>Select your favorite accent colorway:</h3>
-            <div class="quiz-options">
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q2', 'cyberpunk', 3)">
-                <span class="opt-color neon-purple"></span> Electric Purple & Hot Pink
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q2', 'streetwear', 3)">
-                <span class="opt-color neon-lime"></span> Neon Acid Green & Black
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q2', 'y2k', 3)">
-                <span class="opt-color neon-blue"></span> Liquid Chrome & Cyan
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q2', 'minimalist', 3)">
-                <span class="opt-color earth-tone"></span> Matte White & Sand
-              </button>
-            </div>
-          </div>
-
-          <!-- Slide 4: Question 3 -->
-          <div class="quiz-slide" id="slide-q3">
-            <span class="quiz-q-num">Question 3 of 3</span>
-            <h3>How do you prefer your silhouettes?</h3>
-            <div class="quiz-options">
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q3', 'streetwear', 'result')">
-                <span class="opt-label">A</span> Super oversized, baggy utility pants
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q3', 'y2k', 'result')">
-                <span class="opt-label">B</span> Crop puffer jackets, retro accessories
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q3', 'cyberpunk', 'result')">
-                <span class="opt-label">C</span> Techwear jackets, cybernetic strap attachments
-              </button>
-              <button class="quiz-opt-btn" onclick="selectQuizAnswer('q3', 'minimalist', 'result')">
-                <span class="opt-label">D</span> Structured clean cuts, matching co-ord sets
-              </button>
-            </div>
-          </div>
-
-          <!-- Slide 5: Results -->
-          <div class="quiz-slide" id="slide-result">
-            <div class="result-badge"><i data-lucide="check-circle"></i> Vibe Checked</div>
-            <h3>Your Style: <span class="gradient-text" id="vibeResultTitle">CYBERPUNK</span></h3>
-            <p id="vibeResultDesc">You thrive in high-contrast neon highlights, futuristic design layers, and heavy techwear accents. You are officially ahead of the curve.</p>
-            
-            <div class="recommended-products-container">
-              <h4>CURATED PICKS FOR YOU:</h4>
-              <div class="recommended-grid" id="recommendedProducts">
-                <!-- Dynamically loaded products -->
-              </div>
-            </div>
-            
-            <div class="result-actions">
-              <a href="#shop" class="btn btn-primary" onclick="applyVibeFilter()">View All Shop Matching Fits</a>
-              <button class="btn btn-outline btn-sm" onclick="restartQuiz()">Retake Quiz</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCT CATALOG SECTION (SHOP) -->
-  <section class="shop-section" id="shop">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">CATALOG DROP 01</span>
-        <h2 class="section-title">Copped street grails</h2>
-        <p class="section-subtitle">Secure the drip. Premium materials, dynamic shapes, and aesthetic details.</p>
-      </div>
-
-      <!-- FILTER AND SORT TOOLBAR -->
-      <div class="catalog-toolbar">
-        <div class="category-filters" id="categoryFilters">
-          <button class="filter-btn active" data-category="all">All Grails</button>
-          <button class="filter-btn" data-category="Tops">Tops</button>
-          <button class="filter-btn" data-category="Bottoms">Bottoms</button>
-          <button class="filter-btn" data-category="Drip">Drip</button>
-        </div>
-
-        <div class="sort-search-wrapper">
-          <div class="search-box">
-            <i data-lucide="search"></i>
-            <input type="text" id="searchInput" placeholder="Search grails...">
-          </div>
+        <!-- Sidebar filters -->
+        <aside class="glass-panel filters-sidebar">
           
-          <div class="sort-box">
-            <select id="sortSelect" aria-label="Sort products">
-              <option value="default">Default Sort</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Top Rated</option>
-            </select>
+          <!-- Category / Genre Filters -->
+          <div class="filter-group">
+            <h3 class="filter-group-title">Genres</h3>
+            <label class="checkbox-container">
+              Action
+              <input type="checkbox" class="genre-filter-chk" value="Action">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              RPG
+              <input type="checkbox" class="genre-filter-chk" value="RPG">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              Strategy
+              <input type="checkbox" class="genre-filter-chk" value="Strategy">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              Adventure
+              <input type="checkbox" class="genre-filter-chk" value="Adventure">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              Shooter
+              <input type="checkbox" class="genre-filter-chk" value="Shooter">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">
+              Indie
+              <input type="checkbox" class="genre-filter-chk" value="Indie">
+              <span class="checkmark"></span>
+            </label>
           </div>
-        </div>
-      </div>
 
-      <!-- PRODUCTS GRID -->
-      <div class="products-grid" id="productsGrid">
-        <!-- Dynamically rendered products -->
-      </div>
-    </div>
-  </section>
+          <!-- Price range filter -->
+          <div class="price-slider-container">
+            <h3 class="filter-group-title">Max Price</h3>
+            <div class="price-slider-values">
+              <span>$0.00</span>
+              <span id="priceSliderVal">$100.00</span>
+            </div>
+            <input type="range" id="priceRangeSlider" class="price-range" min="0" max="100" step="5" value="100">
+          </div>
 
-  <!-- INTERACTIVE LOOKBOOK COLLAGE -->
-  <section class="lookbook-section" id="lookbook">
-    <div class="grid-backdrop"></div>
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">LOOKBOOK // AESTHETICS</span>
-        <h2 class="section-title">Interactive fit compilation</h2>
-        <p class="section-subtitle">Hover or tap the active hot zones on the outfits to instantly shop the catalog pieces.</p>
-      </div>
+          <!-- Active tags list -->
+          <div class="filter-group">
+            <h3 class="filter-group-title" style="border-left-color: var(--accent-pink);">Active Filters</h3>
+            <div class="active-filters" id="activeFiltersContainer">
+              <span class="filter-tag" style="border: none; padding: 0.25rem 0;">None</span>
+            </div>
+            <button class="btn btn-secondary" id="clearFiltersBtn" style="padding: 0.5rem 1rem; font-size: 0.85rem; width: 100%; margin-top: 0.5rem; border-radius: 8px;">
+              <i class="fa-solid fa-trash-can"></i> Clear All
+            </button>
+          </div>
+        </aside>
 
-      <div class="lookbook-grid">
-        <!-- Look 1 -->
-        <div class="lookbook-item card-3d">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800" alt="Y2K Puffer Look" class="look-img">
-          <div class="lookbook-backdrop"></div>
+        <!-- Main Catalog Area -->
+        <section class="catalog-content">
           
-          <!-- Hot zone Sunglasses -->
-          <div class="look-tag" style="top: 15%; left: 50%;" data-product-id="5">
-            <span class="tag-ping"></span>
-            <div class="tag-card">
-              <h5>Chrome Sunglasses</h5>
-              <span>$35.00</span>
-              <button onclick="addToCart(5, 'M', event)">Buy Fit</button>
+          <!-- Toolbar containing sorting & results count -->
+          <div class="catalog-toolbar">
+            <div class="items-count">
+              Showing <span id="catalogCountText">0</span> premium games
+            </div>
+            <div class="sort-select-wrapper">
+              <select id="sortSelect">
+                <option value="popularity">Popularity</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+              </select>
+              <i class="fa-solid fa-chevron-down"></i>
             </div>
           </div>
 
-          <!-- Hot zone Puffer -->
-          <div class="look-tag" style="top: 40%; left: 45%;" data-product-id="4">
-            <span class="tag-ping"></span>
-            <div class="tag-card">
-              <h5>Metallic Puffer</h5>
-              <span>$140.00</span>
-              <button onclick="addToCart(4, 'M', event)">Buy Fit</button>
-            </div>
-          </div>
-          
-          <div class="look-overlay-label">FIT 01: CHROME RETRO</div>
-        </div>
-
-        <!-- Look 2 -->
-        <div class="lookbook-item card-3d">
-          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=800" alt="Street Hood Cargo Look" class="look-img">
-          <div class="lookbook-backdrop"></div>
-
-          <!-- Hot zone Hoodie -->
-          <div class="look-tag" style="top: 35%; left: 52%;" data-product-id="1">
-            <span class="tag-ping"></span>
-            <div class="tag-card">
-              <h5>Cyberpunk Hoodie</h5>
-              <span>$85.00</span>
-              <button onclick="addToCart(1, 'L', event)">Buy Fit</button>
-            </div>
+          <!-- Catalog Card Grid -->
+          <div class="game-grid" id="gameCardGrid">
+            <!-- Game cards injected dynamically via JavaScript -->
           </div>
 
-          <!-- Hot zone Cargos -->
-          <div class="look-tag" style="top: 75%; left: 48%;" data-product-id="2">
-            <span class="tag-ping"></span>
-            <div class="tag-card">
-              <h5>Acid cargo pants</h5>
-              <span>$95.00</span>
-              <button onclick="addToCart(2, 'L', event)">Buy Fit</button>
-            </div>
+          <!-- Empty Catalog Alert -->
+          <div class="empty-catalog" id="emptyCatalogAlert" style="display: none;">
+            <i class="fa-solid fa-ghost"></i>
+            <h3>No Games Found</h3>
+            <p>We couldn't find any games matching your current search term or filter configuration. Try adjusting your sidebar toggles!</p>
+            <button class="btn btn-secondary" id="emptyClearFiltersBtn">Reset Filters</button>
           </div>
 
-          <div class="look-overlay-label">FIT 02: NEON URBAN</div>
-        </div>
+        </section>
+      </div>
 
-        <!-- Look 3 -->
-        <div class="lookbook-item card-3d">
-          <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=800" alt="Tee Sling Look" class="look-img">
-          <div class="lookbook-backdrop"></div>
+    </div>
 
-          <!-- Hot zone Tee -->
-          <div class="look-tag" style="top: 38%; left: 50%;" data-product-id="3">
-            <span class="tag-ping"></span>
-            <div class="tag-card">
-              <h5>Chrome Skull Tee</h5>
-              <span>$45.00</span>
-              <button onclick="addToCart(3, 'L', event)">Buy Fit</button>
-            </div>
-          </div>
 
-          <!-- Hot zone Sling Bag -->
-          <div class="look-tag" style="top: 50%; left: 35%;" data-product-id="6">
-            <span class="tag-ping"></span>
-            <div class="tag-card">
-              <h5>Canvas Sling Bag</h5>
-              <span>$50.00</span>
-              <button onclick="addToCart(6, 'M', event)">Buy Fit</button>
-            </div>
-          </div>
+    <!-- MY LIBRARY PAGE LAYOUT -->
+    <div id="libraryPage" class="library-layout">
+      <div class="library-header">
+        <h2 class="gradient-text" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">User Command Center</h2>
+        <p style="color: var(--text-secondary);">Access all purchased game serial keys, trigger client downloads, or play arcade releases instantly.</p>
+      </div>
 
-          <div class="look-overlay-label">FIT 03: GRUNGE CORE</div>
-        </div>
+      <!-- Grid of purchased library items -->
+      <div class="library-grid" id="libraryCardGrid">
+        <!-- Purchased cards injected dynamically via Javascript -->
+      </div>
+
+      <!-- Empty Library Alert -->
+      <div class="empty-catalog" id="emptyLibraryAlert">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>Library is Empty</h3>
+        <p>You haven't purchased any games yet. Browse our store catalog, add your favorite games to the cart, and complete simulated checkout to see them here!</p>
+        <button class="btn btn-primary" id="libraryToStoreBtn">
+          <i class="fa-solid fa-cart-shopping"></i> Browse Store
+        </button>
       </div>
     </div>
-  </section>
 
-  <!-- CUSTOMER REVIEWS (CHAT STYLE) -->
-  <section class="reviews-section" id="reviews">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">DRIPIO // FEEDBACK</span>
-        <h2 class="section-title">Aura vibe check / W reviews</h2>
-        <p class="section-subtitle">No cap, here is what the community is chatting about the quality, style, and drops.</p>
-      </div>
+  </main>
 
-      <div class="chat-container">
-        <div class="chat-header">
-          <div class="chat-status">
-            <span class="status-indicator animate-pulse"></span>
-            <span>dripio-fits channel (Online)</span>
-          </div>
-          <div class="chat-header-actions">
-            <i data-lucide="hash"></i>
-            <i data-lucide="users"></i>
-          </div>
+
+  <!-- SHOPPING CART SLIDE OUT DRAWER -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay">
+    <div class="cart-drawer">
+      
+      <!-- Drawer Header -->
+      <div class="cart-header">
+        <div class="cart-title-wrapper">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <h2 style="font-size: 1.5rem;">Your Cart</h2>
         </div>
+        <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart drawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
-        <div class="chat-messages" id="chatMessages">
-          <div class="chat-msg">
-            <div class="user-avatar" style="background-color: #6366f1;">KJ</div>
-            <div class="chat-msg-body">
-              <div class="chat-msg-meta">
-                <span class="username">@kai_sk8r</span>
-                <span class="time">Today at 1:42 PM</span>
-              </div>
-              <p class="chat-text">nah the silver puffer jacket actually goes insanely hard. W fabric quality 💀🔥 copped size M and fits perfect.</p>
-              <div class="chat-reactions">
-                <span class="reaction"><span class="emoji">🔥</span> 14</span>
-                <span class="reaction"><span class="emoji">💀</span> 8</span>
-              </div>
-            </div>
-          </div>
+      <!-- Drawer Body Items List -->
+      <div class="cart-items-list" id="cartItemsContainer">
+        <!-- Cart items injected dynamically via Javascript -->
+      </div>
 
-          <div class="chat-msg">
-            <div class="user-avatar" style="background-color: #ec4899;">ZR</div>
-            <div class="chat-msg-body">
-              <div class="chat-msg-meta">
-                <span class="username">@zoe_retro</span>
-                <span class="time">Today at 2:15 PM</span>
-              </div>
-              <p class="chat-text">fit check passed! the cargo straps are bright and look insane at night under uv light. 10/10 bussin</p>
-              <div class="chat-reactions">
-                <span class="reaction"><span class="emoji">💚</span> 9</span>
-                <span class="reaction"><span class="emoji">💯</span> 5</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="chat-msg">
-            <div class="user-avatar" style="background-color: #10b981;">LC</div>
-            <div class="chat-msg-body">
-              <div class="chat-msg-meta">
-                <span class="username">@lucas_cyber</span>
-                <span class="time">Today at 3:02 PM</span>
-              </div>
-              <p class="chat-text">anyone tried code <code class="code-highlight">BUSSIN30</code>? worked for me saved like $45. free shipping is a massive W too</p>
-              <div class="chat-reactions">
-                <span class="reaction"><span class="emoji">🙌</span> 21</span>
-                <span class="reaction"><span class="emoji">💸</span> 12</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="chat-msg">
-            <div class="user-avatar" style="background-color: #f59e0b;">MA</div>
-            <div class="chat-msg-body">
-              <div class="chat-msg-meta">
-                <span class="username">@mya_aesthetic</span>
-                <span class="time">Today at 4:10 PM</span>
-              </div>
-              <p class="chat-text">Just finished the Vibe Checker quiz, recommended the white chrome graphic tee. added it instantly and checked out. countdown to next drop is active can't wait for catalog 02!!</p>
-              <div class="chat-reactions">
-                <span class="reaction"><span class="emoji">✨</span> 7</span>
-              </div>
-            </div>
-          </div>
+      <!-- Drawer Footer Summary & Checkout -->
+      <div class="cart-footer-summary" id="cartSummaryContainer">
+        
+        <!-- Promo Coupon input box -->
+        <div class="promo-code-box">
+          <input type="text" id="promoCodeInput" placeholder="ENTER PROMO CODE">
+          <button id="applyPromoBtn">Apply</button>
         </div>
+        <div id="promoMsgContainer"></div>
 
-        <div class="chat-input-area">
-          <i data-lucide="plus-circle" class="chat-icon"></i>
-          <input type="text" id="chatInput" placeholder="Send message to #dripio-fits...">
-          <button id="sendChatBtn" aria-label="Send message"><i data-lucide="send"></i></button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER / EARLY CLUB -->
-  <section class="club-section">
-    <div class="container">
-      <div class="club-wrapper">
-        <div class="club-content">
-          <h3>JOIN THE DRIPIO UNDERGROUND</h3>
-          <p>Sign up to receive SMS updates, early drop passwords, and 1-of-1 exclusive access. No spam, only grails.</p>
-          <form class="newsletter-form" id="newsletterForm">
-            <input type="email" placeholder="Enter your email to unlock..." required>
-            <button type="submit" class="btn btn-primary">Join Club <i data-lucide="zap"></i></button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-brand">
-        <span class="logo">DRIPIO<span class="logo-dot"></span></span>
-        <p class="footer-desc">Curating streetwear grails for the next wave. Sustainability-minded sourcing, ultra-durable heavy cottons, and reflective components. Verified W aesthetics.</p>
-        <div class="social-links">
-          <a href="#" aria-label="TikTok" class="social-link"><i data-lucide="instagram"></i></a>
-          <a href="#" aria-label="Twitter" class="social-link"><i data-lucide="twitter"></i></a>
-          <a href="#" aria-label="Discord" class="social-link"><i data-lucide="message-square"></i></a>
-        </div>
-      </div>
-      <div class="footer-links-group">
-        <h4>Drops</h4>
-        <a href="#shop">Latest Drop 01</a>
-        <a href="#hero">Next Countdown</a>
-        <a href="#quiz">Vibe Quiz</a>
-      </div>
-      <div class="footer-links-group">
-        <h4>Support</h4>
-        <a href="#reviews">Discord Channels</a>
-        <a href="#">Shipping Rates</a>
-        <a href="#">Returns & Exchanges</a>
-      </div>
-      <div class="footer-links-group">
-        <h4>Info</h4>
-        <a href="#">Fabric Tech Specs</a>
-        <a href="#">Vibe Guidelines</a>
-        <a href="#">Terms & Privacy</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>&copy; <span id="year">2026</span> DRIPIO. W Fits Registered.</p>
-      <div class="payments-mock">
-        <i data-lucide="credit-card"></i> Visa / Mastercard / Apple Pay Sim
-      </div>
-    </div>
-  </footer>
-
-  <!-- SHOPPING CART SLIDE DRAWER -->
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-drawer-header">
-      <h3 class="cart-title"><i data-lucide="shopping-bag"></i> BAG (<span id="cartCount">0</span>)</h3>
-      <button class="icon-btn" id="closeCartBtn" aria-label="Close Bag"><i data-lucide="x"></i></button>
-    </div>
-    
-    <div class="cart-items" id="cartItemsContainer">
-      <!-- Dynamically filled cart items -->
-      <div class="cart-empty-message">
-        <i data-lucide="frown" style="width: 48px; height: 48px; opacity: 0.3; margin-bottom: 1rem;"></i>
-        <p>Your shopping bag has zero items. No drip.</p>
-        <a href="#shop" class="btn btn-primary btn-sm" style="margin-top: 1rem;" onclick="closeCartDrawer()">Shop Grails</a>
-      </div>
-    </div>
-    
-    <div class="cart-footer">
-      <!-- Promo code block -->
-      <div class="promo-block">
-        <input type="text" id="promoInput" placeholder="ENTER PROMO CODE (e.g. BUSSIN30)">
-        <button id="promoBtn" class="btn btn-outline btn-sm">Apply</button>
-      </div>
-      <div class="promo-feedback" id="promoFeedback"></div>
-
-      <!-- Cost Breakdown -->
-      <div class="price-breakdown">
-        <div class="price-row">
+        <!-- Prices breakdown -->
+        <div class="summary-row">
           <span>Subtotal</span>
           <span id="cartSubtotal">$0.00</span>
         </div>
-        <div class="price-row">
-          <span>Discount (<span id="discountPercentage">0%</span>)</span>
-          <span id="cartDiscount">-$0.00</span>
+        <div class="summary-row discount-row" id="cartDiscountRow" style="display: none;">
+          <span>Promo Discount</span>
+          <span id="cartDiscountVal">-$0.00</span>
         </div>
-        <div class="price-row">
-          <span>Shipping</span>
-          <span id="cartShipping">TBD</span>
-        </div>
-        <div class="price-row total-row">
+        <div class="summary-row total-row">
           <span>Total</span>
           <span id="cartTotal">$0.00</span>
         </div>
+
+        <!-- Action button -->
+        <button class="checkout-btn" id="checkoutBtn">
+          <i class="fa-solid fa-credit-card"></i> Proceed to Checkout
+        </button>
       </div>
-      
-      <button class="btn btn-primary btn-block checkout-btn" id="checkoutBtn" disabled>
-        PROCEED TO CHECKOUT <i data-lucide="credit-card"></i>
-      </button>
+
     </div>
   </div>
-  <div class="cart-overlay" id="cartOverlay"></div>
 
-  <!-- CHECKOUT MODAL -->
-  <div class="modal" id="checkoutModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>SECURE SIMULATED CHECKOUT</h3>
-        <button class="icon-btn" id="closeCheckoutBtn" aria-label="Close Checkout"><i data-lucide="x"></i></button>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div class="modal-overlay" id="detailModalOverlay">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="detailCloseBtn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="detail-grid">
+        <!-- Left Side: Cover art & styling -->
+        <div class="detail-visual">
+          <div class="detail-img-placeholder" id="detailVisualContainer">
+            <!-- Interactive Visual dynamic layer -->
+          </div>
+        </div>
+
+        <!-- Right Side: Game Information & Tabs -->
+        <div class="detail-info-pane">
+          
+          <div class="detail-genre-tags" id="detailTags">
+            <!-- Genre tags injected dynamically -->
+          </div>
+
+          <h2 class="detail-title" id="detailTitle">Game Title</h2>
+          
+          <div class="detail-meta-row">
+            <span class="detail-rating">
+              <i class="fa-solid fa-star"></i>
+              <span id="detailRatingVal">4.9</span>
+            </span>
+            <span id="detailDeveloperText">Publisher / Developer</span>
+          </div>
+
+          <!-- Modals tab controls -->
+          <div class="detail-tabs-nav">
+            <button class="detail-tab-btn active" data-tab="overview">Overview</button>
+            <button class="detail-tab-btn" data-tab="specs">Requirements</button>
+            <button class="detail-tab-btn" data-tab="reviews">Reviews</button>
+          </div>
+
+          <!-- Modals tabs content window -->
+          <div class="detail-tabs-content">
+            <!-- Tab Pane: Overview -->
+            <div class="detail-tab-pane active" id="tab-overview">
+              <p id="detailDescText">Full detailed description of the game will go right here...</p>
+            </div>
+            
+            <!-- Tab Pane: Requirements -->
+            <div class="detail-tab-pane" id="tab-specs">
+              <ul class="requirements-list">
+                <li><strong>OS:</strong> <span id="detailSpecOS">Windows 10/11 64-bit</span></li>
+                <li><strong>Processor:</strong> <span id="detailSpecCPU">Intel Core i7 / AMD Ryzen 5</span></li>
+                <li><strong>Memory:</strong> <span id="detailSpecRAM">16 GB RAM</span></li>
+                <li><strong>Graphics:</strong> <span id="detailSpecGPU">NVIDIA RTX 3060 / AMD RX 6600</span></li>
+                <li><strong>Storage:</strong> <span id="detailSpecStorage">50 GB available space</span></li>
+              </ul>
+            </div>
+
+            <!-- Tab Pane: Reviews -->
+            <div class="detail-tab-pane" id="tab-reviews">
+              <div id="detailReviewsContainer" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Reviews injected dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Cart Footer Actions -->
+          <div class="detail-footer-buy">
+            <div class="detail-price-box">
+              <span class="original" id="detailOriginalPrice">$0.00</span>
+              <span class="current" id="detailCurrentPrice">$0.00</span>
+            </div>
+            <button class="detail-buy-btn" id="detailAddToCartBtn">Add to Cart</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SIMULATED CHECKOUT FLOW MODAL -->
+  <div class="modal-overlay" id="checkoutModalOverlay">
+    <div class="modal-container checkout-modal-container">
+      <button class="modal-close-btn" id="checkoutCloseBtn" aria-label="Close checkout modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Checkout progress wizard timeline -->
+      <div class="checkout-steps">
+        <div class="checkout-step-progress" id="checkoutProgressLine"></div>
+        <div class="step-node active" id="stepNode1">1</div>
+        <div class="step-node" id="stepNode2">2</div>
+        <div class="step-node" id="stepNode3">3</div>
       </div>
 
-      <div class="modal-body" id="checkoutModalBody">
-        <form id="checkoutForm">
-          <div class="form-section-title">Shipping Credentials</div>
-          <div class="form-row">
-            <div class="field-group">
-              <label for="bill-fname">First Name</label>
-              <input type="text" id="bill-fname" placeholder="John" required>
+      <!-- Checkout fields content -->
+      <div class="checkout-body">
+        <form id="checkoutForm" onsubmit="event.preventDefault();">
+          
+          <!-- PANE 1: Customer details -->
+          <div class="checkout-pane active" id="checkoutPane1">
+            <h2 class="gradient-text" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Billing Account Info</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Enter your email to receive invoice copies and sync purchase logs.</p>
+            
+            <div class="form-group">
+              <label for="checkoutEmail">Email Address</label>
+              <input type="email" id="checkoutEmail" required placeholder="name@domain.com">
             </div>
-            <div class="field-group">
-              <label for="bill-lname">Last Name</label>
-              <input type="text" id="bill-lname" placeholder="Doe" required>
-            </div>
-          </div>
-          <div class="field-group">
-            <label for="bill-address">Delivery Address</label>
-            <input type="text" id="bill-address" placeholder="123 Streetwear Ave, Apt 3" required>
-          </div>
-          <div class="form-row">
-            <div class="field-group">
-              <label for="bill-city">City</label>
-              <input type="text" id="bill-city" placeholder="Los Angeles" required>
-            </div>
-            <div class="field-group">
-              <label for="bill-zip">ZIP / Postal Code</label>
-              <input type="text" id="bill-zip" placeholder="90001" required>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="checkoutFirstName">First Name</label>
+                <input type="text" id="checkoutFirstName" required placeholder="John">
+              </div>
+              <div class="form-group">
+                <label for="checkoutLastName">Last Name</label>
+                <input type="text" id="checkoutLastName" required placeholder="Doe">
+              </div>
             </div>
           </div>
 
-          <div class="form-section-title">Payment Simulator</div>
-          <div class="field-group">
-            <label for="card-num">Card Number</label>
-            <div class="input-icon-wrapper">
-              <i data-lucide="credit-card"></i>
-              <input type="text" id="card-num" placeholder="4111 2222 3333 4444" minlength="16" maxlength="19" required>
+          <!-- PANE 2: Payment options (simulated sandbox) -->
+          <div class="checkout-pane" id="checkoutPane2">
+            <h2 class="gradient-text" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Secure Sandbox Payment</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Enter any dummy credit card details to complete your sandbox transaction.</p>
+            
+            <div class="form-group">
+              <label for="cardholderName">Cardholder Name</label>
+              <input type="text" id="cardholderName" placeholder="JOHN DOE">
             </div>
-          </div>
-          <div class="form-row">
-            <div class="field-group">
-              <label for="card-expiry">Expiry Date</label>
-              <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <div class="card-number-wrapper">
+                <input type="text" id="cardNumber" placeholder="4111 2222 3333 4444" maxlength="19">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
             </div>
-            <div class="field-group">
-              <label for="card-cvv">CVV</label>
-              <input type="text" id="card-cvv" placeholder="123" minlength="3" maxlength="4" required>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cardExpiry">Expiration Date</label>
+                <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label for="cardCvv">CVV Code</label>
+                <input type="password" id="cardCvv" placeholder="***" maxlength="3">
+              </div>
             </div>
           </div>
 
-          <div class="express-payments">
-            <span class="express-label">OR EXPRESS SIMULATED PAYMENT</span>
-            <div class="express-row">
-              <button type="button" class="btn express-btn apple-pay" onclick="simulateExpressPayment('Apple Pay')">
-                <i data-lucide="smartphone"></i> Apple Pay
-              </button>
-              <button type="button" class="btn express-btn paypal" onclick="simulateExpressPayment('PayPal')">
-                <i data-lucide="send"></i> PayPal
-              </button>
+          <!-- PANE 3: Keys delivery & Order Success screen -->
+          <div class="checkout-pane checkout-pane-success" id="checkoutPane3">
+            <div class="success-icon-wrapper">
+              <i class="fa-solid fa-check"></i>
             </div>
+            <h2 class="gradient-text" style="font-size: 1.75rem;">Payment Confirmed!</h2>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">Thank you for shopping at Vortex. Below are your official online access game keys:</p>
+
+            <div class="key-delivery-box" id="checkoutKeysDeliveryList">
+              <!-- Dynamically generated keys go here -->
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.8rem;">These keys have also been automatically added to your "My Library" catalog page. Copy and redeem them on Steam, Epic Games, or GOG.</p>
           </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline" id="cancelCheckoutBtn">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="placeOrderBtn">PLACE SIMULATED ORDER</button>
+          <!-- Control navigation buttons -->
+          <div class="checkout-actions">
+            <button type="button" class="btn btn-secondary" id="checkoutBackBtn" style="display: none;">Back</button>
+            <button type="button" class="btn btn-primary" id="checkoutNextBtn" style="margin-left: auto;">Continue</button>
+            <button type="button" class="btn btn-primary" id="checkoutCloseSuccessBtn" style="display: none; width: 100%;">Return to Store</button>
           </div>
+
         </form>
       </div>
     </div>
   </div>
 
-  <!-- PRODUCT QUICK VIEW MODAL -->
-  <div class="modal" id="quickViewModal">
-    <div class="modal-content qv-modal-content">
-      <button class="icon-btn close-modal-btn" id="closeQvBtn" aria-label="Close details"><i data-lucide="x"></i></button>
+
+  <!-- EASTER EGG: INTERACTIVE ARCADE MINI-GAME MODAL -->
+  <div class="modal-overlay" id="arcadeModalOverlay">
+    <div class="modal-container arcade-modal-container">
+      <button class="modal-close-btn" id="arcadeCloseBtn" aria-label="Close game emulator">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       
-      <div class="qv-grid" id="qvModalContent">
-        <!-- Dynamically loaded product details -->
+      <div style="padding: 2.5rem;">
+        <h2 class="gradient-text" style="font-size: 2rem;" id="arcadeGameTitle">VORTEX retro-retro</h2>
+        
+        <div class="arcade-screen">
+          <div class="arcade-crt-scanline"></div>
+          
+          <!-- Arcade main game Canvas -->
+          <canvas id="arcadeCanvas" class="arcade-canvas" width="540" height="300"></canvas>
+          
+          <!-- Start menu dashboard -->
+          <div class="arcade-menu" id="arcadeStartMenu">
+            <span class="arcade-logo">GALAXY DEFENDER</span>
+            <span class="arcade-score">HIGH SCORE: 9999</span>
+            <button class="btn btn-primary" id="startArcadeGameBtn">
+              <i class="fa-solid fa-play"></i> Start Retro Arcade
+            </button>
+            <span class="arcade-instructions">Controls: Arrow keys / A & D to move ship, SPACEBAR to fire lasers! Destroy green incoming alien cores.</span>
+          </div>
+
+          <!-- Game Over dashboard -->
+          <div class="arcade-menu" id="arcadeGameOverMenu" style="display: none;">
+            <span class="arcade-logo" style="color: var(--accent-pink); text-shadow: var(--shadow-neon-pink);">GAME OVER</span>
+            <span class="arcade-score" id="arcadeFinalScore">Your Score: 0</span>
+            <button class="btn btn-primary" id="restartArcadeGameBtn">
+              <i class="fa-solid fa-rotate-left"></i> Play Again
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-secondary);">
+          <span>Volume: <strong>SYNTHETIC MUTE</strong></span>
+          <span>Status: <strong style="color: var(--accent-green);"><i class="fa-solid fa-signal"></i> ONLINE</strong></span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- SEARCH MODAL -->
-  <div class="search-modal" id="searchModal">
-    <div class="search-modal-content">
-      <div class="search-input-wrapper">
-        <i data-lucide="search"></i>
-        <input type="text" id="modalSearchInput" placeholder="Type name, category, or style tag...">
-        <button class="icon-btn" id="closeSearchBtn" aria-label="Close search"><i data-lucide="x"></i></button>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <a href="#" class="logo footer-logo">
+          <div class="logo-vortex"></div>
+          <span>Vortex</span>
+        </a>
+        <p class="footer-desc">Your ultimate hub for premium gaming concepts. High-speed activation codes, top-tier pricing, and an unmatched gaming visual experience.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Vortex Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="Vortex Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="social-btn" aria-label="Vortex Youtube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
       </div>
-      <div class="search-results-label">SEARCH RESULTS</div>
-      <div class="search-results" id="searchResultsContainer"></div>
+
+      <div class="footer-links-col">
+        <h4>Store Hub</h4>
+        <ul>
+          <li><a href="#" class="footer-store-nav">Browse Games</a></li>
+          <li><a href="#" class="footer-library-nav">Game Library</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#">Weekly Deals</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Redeem Key Help</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">System Specs Info</a></li>
+          <li><a href="#">Developer Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>Stay Synced</h4>
+        <p class="footer-desc" style="font-size: 0.85rem;">Subscribe to get alerts on flash sales, game keys, and secret game developer promos.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed in sandbox mode!');">
+          <input type="email" placeholder="cyberpunk@domain.com" required>
+          <button type="submit">Join</button>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <!-- CONFETTI CANVAS FOR ORDER SUCCESS -->
-  <canvas id="confettiCanvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999; display:none;"></canvas>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Vortex Games Inc. Built with premium custom styling. All rights reserved.</p>
+      <p>Simulated Sandbox Ecommerce Platform</p>
+    </div>
+  </footer>
 
+  <!-- Application Logic JS -->
   <script src="app.js"></script>
 </body>
 </html>

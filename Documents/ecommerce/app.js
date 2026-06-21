@@ -1,1118 +1,1678 @@
-// app.js
-// DRIPIO Storefront Client Engine
+// ==========================================
+// VORTEX GAMES - APPLICATION LOGIC
+// ==========================================
 
-// 1. PRODUCT CATALOG DATA
-const PRODUCTS_DATA = [
+// --- GAME CATALOG DATA ---
+const GAMES_CATALOG = [
   {
-    id: 1,
-    name: 'Cyberpunk Oversized Hoodie',
-    price: 85.00,
-    category: 'Tops',
-    tag: 'BEST SELLER',
-    rating: 4.9,
-    image: 'assets/hoodie.png',
-    styleVibe: 'cyberpunk',
-    desc: 'Heavy-weight 450GSM cotton hoodie with dropped shoulders and raw edge seams. Features reflective cybernetic circuit designs printed with violet glow-in-the-dark inks on the sleeves and chest. Engineered for night aesthetics.'
-  },
-  {
-    id: 2,
-    name: 'Neon Acid Baggy Cargos',
-    price: 95.00,
-    category: 'Bottoms',
-    tag: 'NEW',
+    id: "g1",
+    title: "NEON HORIZON 2088",
+    price: 29.99,
+    originalPrice: 59.99,
     rating: 4.8,
-    image: 'assets/cargos.png',
-    styleVibe: 'streetwear',
-    desc: 'Oversized utility cargo pants made from ripstop canvas. Equipped with neon acid-lime nylon strap systems, metal clip rings, and 8 individual pockets. Elastic drawcords at the ankles allow for customizable styling.'
+    popularity: 98,
+    genres: ["RPG", "Action", "Cyberpunk"],
+    developer: "Retrowave Studios",
+    description: "Dive deep into the glowing cyberpunk underbelly of Neo-Detroit in this critically acclaimed open-world action RPG. Hack cybernetic implants, upgrade neon weaponry, and decide the fate of megacorporations in a branching storyline featuring a futuristic synthwave soundtrack.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-9700K / AMD Ryzen 5 3600",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT",
+      storage: "50 GB SSD available space"
+    },
+    reviews: [
+      { user: "CyberDeck_42", stars: 5, comment: "Hands down the best cyberpunk RPG of the decade. The city styling is gorgeous, and the lighting is unreal!" },
+      { user: "SynthWaver", stars: 4, comment: "Amazing soundtrack and fluid gunplay. Had a few minor sandbox glitches, but the depth is unmatched." }
+    ],
+    coverStyle: "cyberpunk"
   },
   {
-    id: 3,
-    name: 'Y2K Chrome Graphic Tee',
-    price: 45.00,
-    category: 'Tops',
-    tag: 'TRENDING',
-    rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800',
-    styleVibe: 'y2k',
-    desc: 'Vintage washed cotton tee in off-white featuring a high-definition liquid-chrome tribal design and heavy metal typeface detailing. Pre-shrunk and relaxed fit for an authentic late 90s aesthetic.'
-  },
-  {
-    id: 4,
-    name: 'Silver Metallic Puffer Jacket',
-    price: 140.00,
-    category: 'Tops',
-    tag: 'LIMITED',
-    rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&q=80&w=800',
-    styleVibe: 'y2k',
-    desc: 'Cropped puffer jacket featuring a hyper-reflective silver metallic outer shell. Packed with synthetic thermal down, adjustable toggle hem, and a fleece-lined high collar. Windproof and water-resistant.'
-  },
-  {
-    id: 5,
-    name: 'Wraparound Chrome Sunglasses',
-    price: 35.00,
-    category: 'Drip',
-    tag: 'GRAIL',
+    id: "g2",
+    title: "SHADOW ODYSSEY",
+    price: 19.99,
+    originalPrice: 39.99,
     rating: 4.6,
-    image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800',
-    styleVibe: 'cyberpunk',
-    desc: 'Y2K retro-futuristic wraparound sunglasses with lightweight chrome frames. Features reflective neon blue polarized lenses offering full UV400 protection. Perfect for festivals, raves, or low-light styling.'
+    popularity: 87,
+    genres: ["Adventure", "Action", "RPG"],
+    developer: "Moonlight Interactive",
+    description: "Embark on a dark fantasy journey through shattered cosmic dimensions. As the Last Sentinel, navigate atmospheric medieval ruins, battle terrifying void behemoths, and retrieve the eternal embers to light the celestial heart.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1660 / AMD Radeon RX 590",
+      storage: "30 GB available space"
+    },
+    reviews: [
+      { user: "DarkSoulsFan", stars: 5, comment: "Atmosphere is incredibly dense. Combat is punishing but extremely fair and rewarding!" },
+      { user: "GamerDad", stars: 4, comment: "Beautiful art direction. Wish the fast travel system was slightly faster, but the visual world is wonderful." }
+    ],
+    coverStyle: "dark-fantasy"
   },
   {
-    id: 6,
-    name: 'Utility Canvas Sling Bag',
-    price: 50.00,
-    category: 'Drip',
-    tag: 'ESSENTIAL',
+    id: "g3",
+    title: "CHRONO RIFT",
+    price: 0.00, // FREE
+    originalPrice: 0.00,
+    rating: 4.5,
+    popularity: 92,
+    genres: ["Strategy", "Indie"],
+    developer: "Paradox Loop",
+    description: "A mind-bending tactical time-manipulation game where your previous turns run parallel to your enemies. Plan actions down to the millisecond, record clones of your timeline, and outsmart complex defense nodes in this highly acclaimed sci-fi puzzle shooter.",
+    specs: {
+      os: "Windows 7/10/11 64-bit",
+      cpu: "Intel Core i5-4460 / AMD FX-6300",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1050 / AMD Radeon RX 560",
+      storage: "12 GB available space"
+    },
+    reviews: [
+      { user: "TimeSplitter", stars: 5, comment: "Insanely clever gameplay loop! Plotting moves alongside your own past actions is brilliant." },
+      { user: "IndieLover", stars: 4, comment: "Short but incredibly dense with genius mechanics. And it is completely free to play!" }
+    ],
+    coverStyle: "time-rift"
+  },
+  {
+    id: "g4",
+    title: "STARMINER INFINITE",
+    price: 14.99,
+    originalPrice: 24.99,
+    rating: 4.3,
+    popularity: 76,
+    genres: ["Strategy", "Simulation", "Indie"],
+    developer: "AstroForge Corp",
+    description: "Automate massive galactic mining space stations, optimize hyperlane conveyor grids, and defend your drill rings from aggressive alien pirate swarms in a fully procedurally generated asteroid belt universe. Scale production to dominate the system economy.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-7600K / AMD Ryzen 3 3100",
+      ram: "12 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+      storage: "15 GB available space"
+    },
+    reviews: [
+      { user: "FactoryFix", stars: 5, comment: "If you love games like Factorio and space simulations, this is pure digital crack. Highly addictive." },
+      { user: "SpacePirate", stars: 4, comment: "Automation systems work beautifully. Combat could be slightly deeper, but expansion mechanics are stellar." }
+    ],
+    coverStyle: "space-industry"
+  },
+  {
+    id: "g5",
+    title: "TACTICAL BREACH: ZERO",
+    price: 9.99,
+    originalPrice: 19.99,
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800',
-    styleVibe: 'streetwear',
-    desc: 'Heavy-duty black canvas cross-body tactical bag. Accented with neon orange webbing, quick-release plastic buckles, and compression cord locks. Features multi-compartment zip storage for daily essentials.'
+    popularity: 91,
+    genres: ["Shooter", "Action"],
+    developer: "Ironclad Games",
+    description: "A high-stakes tactical first-person shooter where every sound count. Design breach plans, set charge lines, execute room clears, and defuse critical nodes. Play solo with advanced AI squads or coordinate with friends in intense multiplayer operations.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-6700K / AMD Ryzen 5 1600",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1070 / AMD Radeon RX Vega 56",
+      storage: "40 GB available space"
+    },
+    reviews: [
+      { user: "BreachMaster", stars: 5, comment: "Slow, methodical, tense, and absolutely brilliant. Communication is key to win." },
+      { user: "NoobShooter", stars: 4, comment: "Tough learning curve, but once you learn how to lean, slice the pie, and coordinate breaches, it is unbeatable." }
+    ],
+    coverStyle: "tactical"
+  },
+  {
+    id: "g6",
+    title: "ROGUE CELL",
+    price: 12.99,
+    originalPrice: 12.99,
+    rating: 4.4,
+    popularity: 81,
+    genres: ["Indie", "Action", "RPG"],
+    developer: "NanoPixel Studio",
+    description: "Fight through ever-shifting synthwave dungeons in this rogue-like hack-and-slash. Hack genetic structures to upgrade your mutation modules with every death, collect pixelated relics, and battle bio-mechanical cellular guards.",
+    specs: {
+      os: "Windows 7/10/11",
+      cpu: "Dual Core 2.0 GHz",
+      ram: "8 GB RAM",
+      gpu: "Integrated Graphics compatible with Shader Model 4.0",
+      storage: "5 GB available space"
+    },
+    reviews: [
+      { user: "RogueRunner", stars: 5, comment: "Insanely fast pacing, high difficulty, and a mind-blowing synthwave aesthetic. Runs on a potato!" },
+      { user: "CellGamer", stars: 4, comment: "Very tight controls and cool mutation builds. Highly recommend for quick gaming sessions." }
+    ],
+    coverStyle: "rogue-cell"
+  },
+  {
+    id: "g7",
+    title: "EXO-COLONY: MARS",
+    price: 24.99,
+    originalPrice: 49.99,
+    rating: 4.2,
+    popularity: 79,
+    genres: ["Strategy", "Simulation"],
+    developer: "RedPlanet Labs",
+    description: "Establish the first self-sustaining human colony on Mars. Manage complex atmospheric generators, water recycling grids, greenhouse crop arrays, and defense structures against Martian dust storms. Balance resource quotas with citizen sanity.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i7-8700 / AMD Ryzen 5 3600X",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700",
+      storage: "25 GB available space"
+    },
+    reviews: [
+      { user: "MartianMan", stars: 4, comment: "Extremely detailed management system. Hard difficulty spikes during dust storms, but rewarding colony growth." }
+    ],
+    coverStyle: "mars-colony"
+  },
+  {
+    id: "g8",
+    title: "AERO RACER NEO",
+    price: 4.99,
+    originalPrice: 14.99,
+    rating: 4.5,
+    popularity: 85,
+    genres: ["Action", "Indie"],
+    developer: "Velocity Labs",
+    description: "Defy gravity in high-velocity anti-grav crafts racing across supersonic sky tracks at breakneck speeds. Evade laser traps, weaponize energy boosts, and dominate global leaderboards in this glowing futuristic retro racer.",
+    specs: {
+      os: "Windows 10/11",
+      cpu: "Intel Core i5-6500 / AMD Ryzen 3 1200",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1060 / AMD Radeon RX 470",
+      storage: "10 GB available space"
+    },
+    reviews: [
+      { user: "SpeedDemon", stars: 5, comment: "Felt like Wipeout combined with modern cyberpunk. Adrenaline rush from start to finish!" }
+    ],
+    coverStyle: "aero-racer"
   }
 ];
 
-// 2. CLIENT APPLICATION STATE
-let state = {
-  cart: [],
-  activeCategory: 'all',
-  searchQuery: '',
-  sortBy: 'default',
-  vibeQuizAnswers: { q1: '', q2: '', q3: '' },
-  vibeResult: '',
-  promoCode: '',
-  discountPercent: 0,
-  freeShippingApplied: false,
-  theme: 'dark'
+// --- APP STATE ---
+let cart = [];
+let activeGenres = new Set();
+let maxPriceLimit = 100;
+let searchQueryStr = "";
+let currentSort = "popularity";
+let currentTab = "store";
+let purchasedLibrary = [];
+let appliedPromoCode = null;
+
+// Valid mock promo codes
+const PROMO_CODES = {
+  "VORTEX50": { discountPercent: 50, msg: "50% VORTEX SPECIAL APPLIED!" },
+  "CYBER20": { discountPercent: 20, msg: "20% CYBERPUNK DISCOUNT APPLIED!" },
+  "FREEPLAY": { discountValue: 10, msg: "$10.00 CASH DISCOUNT APPLIED!" }
 };
 
-// 3. APPLICATION INITIALIZATION
-document.addEventListener('DOMContentLoaded', () => {
-  // Load Cart from LocalStorage
-  try {
-    const savedCart = localStorage.getItem('dripio_cart');
-    if (savedCart) {
-      state.cart = JSON.parse(savedCart);
-    }
-  } catch (e) {
-    console.error('Could not load cart data', e);
-  }
+// ==========================================
+// --- INITIALIZATION ---
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+  // Load data from localStorage (Simulating user account persistence)
+  loadStateFromStorage();
 
-  // Load Theme Preference
-  try {
-    const savedTheme = localStorage.getItem('dripio_theme') || 'dark';
-    state.theme = savedTheme;
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    syncThemeUI();
-  } catch (e) {}
-
-  // Initialize Lucide Icons
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-
-  // Set Year in Footer
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Run Tickers and Core UI renders
-  initDropCountdown();
-  renderProducts();
+  // Draw initial catalog
+  renderCatalog();
   updateCartUI();
-  setupGlobalEventListeners();
+
+  // Register Navigation Handlers
+  setupNavigation();
+
+  // Register Search & Filter Handlers
+  setupFilters();
+
+  // Register Drawer Handlers
+  setupCartDrawer();
+
+  // Register Modals Handlers
+  setupModals();
+
+  // Setup Newsletter toast sandbox trigger
+  setupMiscTriggers();
 });
 
-// 4. EVENT LISTENERS SETUP
-function setupGlobalEventListeners() {
-  // Category tabs click handler
-  const categoryContainer = document.getElementById('categoryFilters');
-  if (categoryContainer) {
-    categoryContainer.addEventListener('click', (e) => {
-      const btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      state.activeCategory = btn.dataset.category;
-      renderProducts();
-    });
-  }
-
-  // Search filter handler
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      state.searchQuery = e.target.value;
-      renderProducts();
-    });
-  }
-
-  // Sorting handler
-  const sortSelect = document.getElementById('sortSelect');
-  if (sortSelect) {
-    sortSelect.addEventListener('change', (e) => {
-      state.sortBy = e.target.value;
-      renderProducts();
-    });
-  }
-
-  // Header Actions - Drawer toggles
-  document.getElementById('cartToggleBtn').addEventListener('click', toggleCartDrawer);
-  document.getElementById('closeCartBtn').addEventListener('click', toggleCartDrawer);
-  document.getElementById('cartOverlay').addEventListener('click', toggleCartDrawer);
-
-  // Theme Toggler
-  document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
-
-  // Search Modal
-  const searchToggleBtn = document.getElementById('searchToggleBtn');
-  const searchModal = document.getElementById('searchModal');
-  const closeSearchBtn = document.getElementById('closeSearchBtn');
-  const modalSearchInput = document.getElementById('modalSearchInput');
-
-  if (searchToggleBtn && searchModal) {
-    searchToggleBtn.addEventListener('click', () => {
-      searchModal.classList.add('active');
-      modalSearchInput.focus();
-    });
-  }
-  if (closeSearchBtn && searchModal) {
-    closeSearchBtn.addEventListener('click', () => {
-      searchModal.classList.remove('active');
-      modalSearchInput.value = '';
-      document.getElementById('searchResultsContainer').innerHTML = '';
-    });
-  }
-
-  if (modalSearchInput) {
-    modalSearchInput.addEventListener('input', (e) => {
-      handleModalSearch(e.target.value);
-    });
-  }
-
-  // Promo Code Validation
-  const promoBtn = document.getElementById('promoBtn');
-  if (promoBtn) {
-    promoBtn.addEventListener('click', applyPromoCode);
-  }
-
-  // Checkout trigger
-  const checkoutBtn = document.getElementById('checkoutBtn');
-  const checkoutModal = document.getElementById('checkoutModal');
-  const closeCheckoutBtn = document.getElementById('closeCheckoutBtn');
-  const cancelCheckoutBtn = document.getElementById('cancelCheckoutBtn');
-
-  if (checkoutBtn && checkoutModal) {
-    checkoutBtn.addEventListener('click', () => {
-      toggleCartDrawer();
-      checkoutModal.classList.add('active');
-    });
-  }
-  
-  const closeCheckoutFn = () => checkoutModal.classList.remove('active');
-  if (closeCheckoutBtn) closeCheckoutBtn.addEventListener('click', closeCheckoutFn);
-  if (cancelCheckoutBtn) cancelCheckoutBtn.addEventListener('click', closeCheckoutFn);
-
-  // Checkout Form Submission
-  const checkoutForm = document.getElementById('checkoutForm');
-  if (checkoutForm) {
-    checkoutForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      processSimulatedOrder();
-    });
-  }
-
-  // Newsletter Form
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('🔒 EXCLUSIVE DROP ACCESS GRANTED. Welcome to the underground club.');
-      newsletterForm.reset();
-    });
-  }
-
-  // Chat Review Send message
-  const chatInput = document.getElementById('chatInput');
-  const sendChatBtn = document.getElementById('sendChatBtn');
-  if (sendChatBtn && chatInput) {
-    sendChatBtn.addEventListener('click', handleChatSendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleChatSendMessage();
-    });
-  }
-
-  // Quick View close
-  const closeQvBtn = document.getElementById('closeQvBtn');
-  const quickViewModal = document.getElementById('quickViewModal');
-  if (closeQvBtn && quickViewModal) {
-    closeQvBtn.addEventListener('click', () => {
-      quickViewModal.classList.remove('active');
-    });
-  }
-}
-
-// 5. THEME SWITCHER
-function toggleTheme() {
-  const newTheme = state.theme === 'dark' ? 'light' : 'dark';
-  state.theme = newTheme;
-  document.documentElement.setAttribute('data-theme', newTheme);
+// ==========================================
+// --- LOCALSTORAGE PERSISTENCE ---
+// ==========================================
+function loadStateFromStorage() {
   try {
-    localStorage.setItem('dripio_theme', newTheme);
-  } catch (e) {}
-  syncThemeUI();
-}
-
-function syncThemeUI() {
-  const sunIcon = document.getElementById('sun-icon');
-  const moonIcon = document.getElementById('moon-icon');
-  if (state.theme === 'dark') {
-    sunIcon.style.display = 'block';
-    moonIcon.style.display = 'none';
-  } else {
-    sunIcon.style.display = 'none';
-    moonIcon.style.display = 'block';
-  }
-}
-
-// 6. COUNTDOWN DROP TIMER
-function initDropCountdown() {
-  // Generate a dynamic timestamp that is always active: 2 days, 14 hours, 5 minutes into the future
-  let targetTime = Date.now() + (2 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000) + (5 * 60 * 1000);
-  
-  // Try retrieving fixed time from storage so it ticks down continuously
-  try {
-    const storedTarget = localStorage.getItem('dripio_drop_target');
-    if (storedTarget && parseInt(storedTarget) > Date.now()) {
-      targetTime = parseInt(storedTarget);
-    } else {
-      localStorage.setItem('dripio_drop_target', targetTime.toString());
+    const savedCart = localStorage.getItem("vortex_cart");
+    if (savedCart) {
+      cart = JSON.parse(savedCart);
     }
-  } catch (e) {}
+    const savedLib = localStorage.getItem("vortex_library");
+    if (savedLib) {
+      purchasedLibrary = JSON.parse(savedLib);
+    }
+  } catch (err) {
+    console.error("Local storage read failed, using empty states.", err);
+  }
+}
 
-  function updateTimer() {
-    const now = Date.now();
-    const difference = targetTime - now;
+function saveStateToStorage() {
+  try {
+    localStorage.setItem("vortex_cart", JSON.stringify(cart));
+    localStorage.setItem("vortex_library", JSON.stringify(purchasedLibrary));
+  } catch (err) {
+    console.error("Local storage save failed.", err);
+  }
+}
 
-    if (difference <= 0) {
-      document.getElementById('dropTimer').innerHTML = `<h3 style="color: var(--accent-color); font-size: 1.5rem; letter-spacing: 0.1em;">THE DROP IS LIVE!</h3>`;
+// ==========================================
+// --- DYNAMIC GRAPHICS GENERATOR ENGINE ---
+// ==========================================
+// Since the image model is exhausted, this procedural engine creates distinct,
+// highly beautiful and vibrant cyberpunk/scifi SVG layouts dynamically to cover games.
+function createCardCoverVisual(styleType, title) {
+  let innerSVG = "";
+  
+  if (styleType === "cyberpunk") {
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff007f;stop-opacity:1" />
+            <stop offset="60%" style="stop-color:#8a2be2;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0b071e;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad1)" />
+        <circle cx="50%" cy="40%" r="55" fill="none" stroke="#00f0ff" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+        <line x1="0" y1="180" x2="300" y2="180" stroke="#00f0ff" stroke-width="1" opacity="0.4" />
+        <line x1="0" y1="190" x2="300" y2="190" stroke="#ff007f" stroke-width="2" opacity="0.8" />
+        <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="34" font-weight="900" fill="#ffffff" opacity="0.15">2088</text>
+        <path d="M 30,130 L 270,130 L 250,170 L 50,170 Z" fill="rgba(6, 4, 13, 0.7)" stroke="#00f0ff" stroke-width="1"/>
+        <text x="50%" y="152%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="10" font-weight="700" fill="#00f0ff" letter-spacing="4">SYSTEM REBOOT</text>
+      </svg>
+    `;
+  } else if (styleType === "dark-fantasy") {
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4a154b;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#120c1f;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#020005;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad2)" />
+        <polygon points="150,30 220,130 80,130" fill="none" stroke="#ffb700" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="150" cy="85" r="25" fill="none" stroke="#ff007f" stroke-width="1" opacity="0.5"/>
+        <path d="M10,200 L290,200" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <path d="M150,130 L150,180" stroke="#ffb700" stroke-width="2" opacity="0.7"/>
+        <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="30" font-weight="800" fill="#ffffff" opacity="0.08">VOID</text>
+      </svg>
+    `;
+  } else if (styleType === "time-rift") {
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad3" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#0b071e;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#8a2be2;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad3)" />
+        <circle cx="50%" cy="45%" r="45" fill="none" stroke="#00f0ff" stroke-width="3" opacity="0.8"/>
+        <line x1="150" y1="45" x2="150" y2="20" stroke="#ff007f" stroke-width="3" />
+        <line x1="150" y1="45" x2="180" y2="45" stroke="#ff007f" stroke-width="3" />
+        <path d="M 20,200 L 280,100" stroke="rgba(255, 0, 127, 0.3)" stroke-width="1.5"/>
+        <path d="M 20,100 L 280,200" stroke="rgba(0, 240, 255, 0.3)" stroke-width="1.5"/>
+        <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="3">TIMELINE: ZERO</text>
+      </svg>
+    `;
+  } else if (styleType === "space-industry") {
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad4" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#ffb700;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#4a121a;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0b071e;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad4)" />
+        <circle cx="80" cy="70" r="30" fill="#ffb700" opacity="0.7"/>
+        <line x1="80" y1="70" x2="220" y2="150" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+        <rect x="180" y="120" width="50" height="50" rx="8" fill="none" stroke="#00f0ff" stroke-width="2"/>
+        <text x="50%" y="82%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="11" font-weight="700" fill="#ffb700" letter-spacing="2">EXTRACTING METALS</text>
+      </svg>
+    `;
+  } else if (styleType === "tactical") {
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2a3a2a;stop-opacity:1" />
+            <stop offset="60%" style="stop-color:#0e170e;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#020502;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad5)" />
+        <path d="M 50,50 L 250,50 L 250,150 L 50,150 Z" fill="none" stroke="#00ff66" stroke-width="1" opacity="0.3"/>
+        <line x1="150" y1="20" x2="150" y2="180" stroke="#ff007f" stroke-dasharray="2,2" stroke-width="1.5" />
+        <circle cx="150" cy="100" r="25" fill="none" stroke="#00ff66" stroke-width="2" />
+        <line x1="120" y1="100" x2="180" y2="100" stroke="#00ff66" stroke-width="2" />
+        <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="10" font-weight="700" fill="#00ff66" letter-spacing="4">BREACH ACTIVE</text>
+      </svg>
+    `;
+  } else if (styleType === "rogue-cell") {
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad6" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#ff007f;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ffb700;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad6)" />
+        <polygon points="150,40 190,80 170,130 130,130 110,80" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+        <line x1="150" y1="40" x2="150" y2="130" stroke="#ffffff" opacity="0.4"/>
+        <circle cx="150" cy="85" r="10" fill="#ffffff" />
+        <text x="50%" y="82%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="3">MUTATION MOD</text>
+      </svg>
+    `;
+  } else if (styleType === "mars-colony") {
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad7" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#e65c00;stop-opacity:1" />
+            <stop offset="60%" style="stop-color:#7f2200;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1a0700;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad7)" />
+        <path d="M30,150 Q150,80 270,150" fill="rgba(0, 240, 255, 0.1)" stroke="#00f0ff" stroke-width="2"/>
+        <circle cx="150" cy="120" r="15" fill="none" stroke="#00f0ff" stroke-width="1.5" />
+        <circle cx="120" cy="140" r="8" fill="none" stroke="#00f0ff" stroke-width="1" />
+        <circle cx="180" cy="140" r="8" fill="none" stroke="#00f0ff" stroke-width="1" />
+        <text x="50%" y="30%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="28" font-weight="800" fill="#ffb700" opacity="0.12">MARS</text>
+      </svg>
+    `;
+  } else { // aero-racer
+    innerSVG = `
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad8" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ff007f;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grad8)" />
+        <path d="M 60,140 L 150,40 L 240,140 Z" fill="rgba(6, 4, 13, 0.8)" stroke="#ffffff" stroke-width="2"/>
+        <line x1="30" y1="160" x2="270" y2="160" stroke="#00f0ff" stroke-width="3" />
+        <line x1="30" y1="170" x2="270" y2="170" stroke="#ff007f" stroke-width="1" />
+        <text x="50%" y="82%" dominant-baseline="middle" text-anchor="middle" font-family="Outfit" font-size="11" font-weight="900" fill="#00f0ff" letter-spacing="4">BOOST ACTIVATED</text>
+      </svg>
+    `;
+  }
+  
+  return `
+    <div class="card-visual-gen">${innerSVG}</div>
+    <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(6,4,13,0.9) 0%, rgba(6,4,13,0.2) 60%, transparent 100%); z-index:1;"></div>
+    <div style="position:absolute; bottom:1rem; left:1rem; right:1rem; z-index:2; text-shadow:0 2px 4px rgba(0,0,0,0.8);">
+      <div style="font-family:Outfit; font-size:1.15rem; font-weight:800; color:white; line-height:1.2; text-transform:uppercase;">${title}</div>
+    </div>
+  `;
+}
+
+// ==========================================
+// --- CATALOG RENDERING & LOGIC ---
+// ==========================================
+function renderCatalog() {
+  const gridContainer = document.getElementById("gameCardGrid");
+  const countText = document.getElementById("catalogCountText");
+  const emptyAlert = document.getElementById("emptyCatalogAlert");
+
+  if (!gridContainer) return;
+
+  // Filter Catalog
+  let filteredGames = GAMES_CATALOG.filter(game => {
+    // Search match (title or tags)
+    const matchesSearch = searchQueryStr.trim() === "" || 
+      game.title.toLowerCase().includes(searchQueryStr.toLowerCase()) ||
+      game.developer.toLowerCase().includes(searchQueryStr.toLowerCase()) ||
+      game.genres.some(genre => genre.toLowerCase().includes(searchQueryStr.toLowerCase()));
+
+    // Genre checkbox match
+    const matchesGenre = activeGenres.size === 0 || 
+      game.genres.some(genre => activeGenres.has(genre));
+
+    // Price range match
+    const matchesPrice = game.price <= maxPriceLimit;
+
+    return matchesSearch && matchesGenre && matchesPrice;
+  });
+
+  // Sort Catalog
+  filteredGames.sort((a, b) => {
+    if (currentSort === "price-low") {
+      return a.price - b.price;
+    } else if (currentSort === "price-high") {
+      return b.price - a.price;
+    } else if (currentSort === "rating") {
+      return b.rating - a.rating;
+    } else { // default: popularity
+      return b.popularity - a.popularity;
+    }
+  });
+
+  // Set Count Text
+  countText.textContent = filteredGames.length;
+
+  // Clear Grid
+  gridContainer.innerHTML = "";
+
+  if (filteredGames.length === 0) {
+    gridContainer.style.display = "none";
+    emptyAlert.style.display = "flex";
+    return;
+  }
+
+  gridContainer.style.display = "grid";
+  emptyAlert.style.display = "none";
+
+  // Build Game Cards
+  filteredGames.forEach(game => {
+    const cardEl = document.createElement("div");
+    cardEl.className = "game-card glass-panel";
+    
+    // Check if in cart
+    const isAlreadyInCart = cart.some(item => item.id === game.id);
+    const inCartClass = isAlreadyInCart ? "in-cart" : "";
+    const inCartIcon = isAlreadyInCart ? "fa-solid fa-cart-check" : "fa-solid fa-cart-plus";
+
+    // Discount percentage
+    let discountBadge = "";
+    if (game.originalPrice > game.price) {
+      const discountPct = Math.round(((game.originalPrice - game.price) / game.originalPrice) * 100);
+      discountBadge = `<div class="card-discount">-${discountPct}%</div>`;
+    }
+
+    // Price tags text
+    let priceHTML = "";
+    if (game.price === 0) {
+      priceHTML = `<span class="current-price free-price">FREE</span>`;
+    } else {
+      const originalHTML = game.originalPrice > game.price ? 
+        `<span class="original-price">$${game.originalPrice.toFixed(2)}</span>` : "";
+      priceHTML = `
+        ${originalHTML}
+        <span class="current-price">$${game.price.toFixed(2)}</span>
+      `;
+    }
+
+    // Genre items pills
+    const genresHTML = game.genres.map(g => `<span>${g}</span>`).join("");
+
+    // Setup cover element visual
+    const coverArtHTML = createCardCoverVisual(game.coverStyle, game.title);
+
+    cardEl.innerHTML = `
+      <div class="card-img-wrapper">
+        <div class="card-img-placeholder">
+          <i class="fa-solid fa-gamepad"></i>
+          ${coverArtHTML}
+        </div>
+        <div class="card-tag">${game.developer}</div>
+        ${discountBadge}
+      </div>
+      <div class="card-body">
+        <div class="card-details">
+          <div class="card-rating">
+            <i class="fa-solid fa-star"></i>
+            <span>${game.rating.toFixed(1)} / 5.0</span>
+          </div>
+          <h3 class="card-title">${game.title}</h3>
+          <div class="card-genres">
+            ${genresHTML}
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-price-container">
+            ${priceHTML}
+          </div>
+          <button class="card-buy-btn ${inCartClass}" data-id="${game.id}" aria-label="Add to cart">
+            <i class="${inCartIcon}"></i>
+          </button>
+        </div>
+      </div>
+    `;
+
+    // Event listener: clicking the card anywhere (except the Buy button) opens detail modal
+    cardEl.addEventListener("click", (e) => {
+      if (e.target.closest(".card-buy-btn")) {
+        // Intercept add to cart
+        e.stopPropagation();
+        toggleCartItem(game.id);
+      } else {
+        openDetailModal(game.id);
+      }
+    });
+
+    gridContainer.appendChild(cardEl);
+  });
+}
+
+// ==========================================
+// --- NAVIGATION CONTROLLER ---
+// ==========================================
+function setupNavigation() {
+  const storeBtn = document.getElementById("navStoreBtn");
+  const libraryBtn = document.getElementById("navLibraryBtn");
+  
+  const storePage = document.getElementById("storePage");
+  const libraryPage = document.getElementById("libraryPage");
+
+  const logoLink = document.getElementById("logoLink");
+  const toStoreBtn = document.getElementById("libraryToStoreBtn");
+
+  // Nav footer anchors
+  const footerStore = document.querySelector(".footer-store-nav");
+  const footerLibrary = document.querySelector(".footer-library-nav");
+
+  function switchToTab(tabName) {
+    currentTab = tabName;
+    if (tabName === "store") {
+      storeBtn.classList.add("active");
+      libraryBtn.classList.remove("active");
+      storePage.style.display = "block";
+      libraryPage.classList.remove("active");
+      renderCatalog();
+    } else {
+      storeBtn.classList.remove("active");
+      libraryBtn.classList.add("active");
+      storePage.style.display = "none";
+      libraryPage.classList.add("active");
+      renderLibrary();
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  storeBtn.addEventListener("click", () => switchToTab("store"));
+  libraryBtn.addEventListener("click", () => switchToTab("library"));
+  logoLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    switchToTab("store");
+  });
+  toStoreBtn.addEventListener("click", () => switchToTab("store"));
+
+  if (footerStore) {
+    footerStore.addEventListener("click", (e) => {
+      e.preventDefault();
+      switchToTab("store");
+    });
+  }
+  if (footerLibrary) {
+    footerLibrary.addEventListener("click", (e) => {
+      e.preventDefault();
+      switchToTab("library");
+    });
+  }
+}
+
+// ==========================================
+// --- FILTER CONTROLLER ---
+// ==========================================
+function setupFilters() {
+  const searchInput = document.getElementById("searchInput");
+  const priceSlider = document.getElementById("priceRangeSlider");
+  const priceDisplay = document.getElementById("priceSliderVal");
+  const sortSelect = document.getElementById("sortSelect");
+  const clearBtn = document.getElementById("clearFiltersBtn");
+  const emptyClearBtn = document.getElementById("emptyClearFiltersBtn");
+  
+  // Search text input
+  searchInput.addEventListener("input", (e) => {
+    searchQueryStr = e.target.value;
+    renderCatalog();
+    renderActiveFilterTags();
+  });
+
+  // Genre checkboxes
+  const genreCheckboxes = document.querySelectorAll(".genre-filter-chk");
+  genreCheckboxes.forEach(chk => {
+    chk.addEventListener("change", () => {
+      if (chk.checked) {
+        activeGenres.add(chk.value);
+      } else {
+        activeGenres.delete(chk.value);
+      }
+      renderCatalog();
+      renderActiveFilterTags();
+    });
+  });
+
+  // Price range slider
+  priceSlider.addEventListener("input", (e) => {
+    maxPriceLimit = parseFloat(e.target.value);
+    priceDisplay.textContent = `$${maxPriceLimit.toFixed(2)}`;
+    renderCatalog();
+    renderActiveFilterTags();
+  });
+
+  // Sort dropdown
+  sortSelect.addEventListener("change", (e) => {
+    currentSort = e.target.value;
+    renderCatalog();
+  });
+
+  // Clear filters
+  function resetAllFilters() {
+    searchInput.value = "";
+    searchQueryStr = "";
+    
+    activeGenres.clear();
+    genreCheckboxes.forEach(chk => chk.checked = false);
+
+    priceSlider.value = 100;
+    maxPriceLimit = 100;
+    priceDisplay.textContent = "$100.00";
+
+    renderCatalog();
+    renderActiveFilterTags();
+    showToast("Filters successfully cleared", "success");
+  }
+
+  clearBtn.addEventListener("click", resetAllFilters);
+  emptyClearBtn.addEventListener("click", resetAllFilters);
+}
+
+// Render the small descriptive tags showing what filters are active
+function renderActiveFilterTags() {
+  const container = document.getElementById("activeFiltersContainer");
+  if (!container) return;
+
+  container.innerHTML = "";
+  let activeCount = 0;
+
+  // Search text tag
+  if (searchQueryStr.trim() !== "") {
+    activeCount++;
+    createFilterTag(container, `Search: "${searchQueryStr.substring(0, 10)}..."`, () => {
+      document.getElementById("searchInput").value = "";
+      searchQueryStr = "";
+      renderCatalog();
+      renderActiveFilterTags();
+    });
+  }
+
+  // Genre tags
+  activeGenres.forEach(genre => {
+    activeCount++;
+    createFilterTag(container, genre, () => {
+      activeGenres.delete(genre);
+      // Uncheck matching checkbox
+      const chk = Array.from(document.querySelectorAll(".genre-filter-chk")).find(c => c.value === genre);
+      if (chk) chk.checked = false;
+      renderCatalog();
+      renderActiveFilterTags();
+    });
+  });
+
+  // Max price tag
+  if (maxPriceLimit < 100) {
+    activeCount++;
+    createFilterTag(container, `Max: $${maxPriceLimit.toFixed(0)}`, () => {
+      const priceSlider = document.getElementById("priceRangeSlider");
+      priceSlider.value = 100;
+      maxPriceLimit = 100;
+      document.getElementById("priceSliderVal").textContent = "$100.00";
+      renderCatalog();
+      renderActiveFilterTags();
+    });
+  }
+
+  if (activeCount === 0) {
+    container.innerHTML = `<span class="filter-tag" style="border: none; padding: 0.25rem 0;">None</span>`;
+  }
+}
+
+function createFilterTag(parent, text, onRemove) {
+  const tag = document.createElement("span");
+  tag.className = "filter-tag";
+  tag.innerHTML = `${text} <i class="fa-solid fa-xmark"></i>`;
+  tag.querySelector("i").addEventListener("click", onRemove);
+  parent.appendChild(tag);
+}
+
+// ==========================================
+// --- SHOPPING CART DRAWER CONTROLLER ---
+// ==========================================
+function setupCartDrawer() {
+  const drawerOverlay = document.getElementById("cartDrawerOverlay");
+  const toggleBtn = document.getElementById("cartToggleBtn");
+  const closeBtn = document.getElementById("cartCloseBtn");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+
+  const promoInput = document.getElementById("promoCodeInput");
+  const applyPromoBtn = document.getElementById("applyPromoBtn");
+
+  // Open / Close Drawer
+  toggleBtn.addEventListener("click", () => {
+    drawerOverlay.classList.add("open");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    drawerOverlay.classList.remove("open");
+  });
+
+  drawerOverlay.addEventListener("click", (e) => {
+    if (e.target === drawerOverlay) {
+      drawerOverlay.classList.remove("open");
+    }
+  });
+
+  // Coupon promo activation
+  applyPromoBtn.addEventListener("click", () => {
+    const code = promoInput.value.trim().toUpperCase();
+    if (PROMO_CODES[code]) {
+      appliedPromoCode = code;
+      showToast("Promo Code applied successfully!", "success");
+      updateCartUI();
+    } else {
+      showToast("Invalid Promo Code entered", "error");
+      appliedPromoCode = null;
+      updateCartUI();
+    }
+  });
+
+  // Checkout modal launch
+  checkoutBtn.addEventListener("click", () => {
+    if (cart.length === 0) {
+      showToast("Your cart is empty!", "error");
+      return;
+    }
+    drawerOverlay.classList.remove("open");
+    openCheckoutWizard();
+  });
+}
+
+function toggleCartItem(gameId) {
+  const index = cart.findIndex(item => item.id === gameId);
+  const game = GAMES_CATALOG.find(g => g.id === gameId);
+
+  if (index > -1) {
+    // Remove from cart
+    cart.splice(index, 1);
+    showToast(`Removed "${game.title}" from cart`, "success");
+  } else {
+    // Add to cart
+    cart.push({
+      id: game.id,
+      title: game.title,
+      price: game.price,
+      genres: game.genres,
+      coverStyle: game.coverStyle,
+      qty: 1
+    });
+    showToast(`Added "${game.title}" to cart`, "success");
+  }
+
+  saveStateToStorage();
+  updateCartUI();
+  renderCatalog();
+}
+
+function updateCartUI() {
+  const cartBadge = document.getElementById("cartBadgeCount");
+  const cartList = document.getElementById("cartItemsContainer");
+  const summaryContainer = document.getElementById("cartSummaryContainer");
+
+  const subtotalEl = document.getElementById("cartSubtotal");
+  const discountRow = document.getElementById("cartDiscountRow");
+  const discountValEl = document.getElementById("cartDiscountVal");
+  const totalEl = document.getElementById("cartTotal");
+  const promoMsg = document.getElementById("promoMsgContainer");
+
+  // Update Badge count
+  const totalItemsCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  cartBadge.textContent = totalItemsCount;
+  
+  if (totalItemsCount > 0) {
+    cartBadge.style.display = "flex";
+  } else {
+    cartBadge.style.display = "none";
+  }
+
+  // Clear Cart List
+  cartList.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartList.innerHTML = `
+      <div class="cart-empty-state">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <p>Your shopping basket is empty.</p>
+      </div>
+    `;
+    summaryContainer.style.display = "none";
+    return;
+  }
+
+  summaryContainer.style.display = "flex";
+
+  // Build Cart List Items
+  cart.forEach(item => {
+    const itemEl = document.createElement("div");
+    itemEl.className = "cart-item";
+
+    const customVisual = createCardCoverVisual(item.coverStyle, "");
+
+    itemEl.innerHTML = `
+      <div class="cart-item-img">
+        ${customVisual}
+      </div>
+      <div class="cart-item-details">
+        <span class="cart-item-title">${item.title}</span>
+        <span class="cart-item-genres">${item.genres.join(", ")}</span>
+        <span class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</span>
+      </div>
+      <div class="cart-item-actions">
+        <button class="quantity-btn dec-qty" data-id="${item.id}">-</button>
+        <span class="cart-item-qty">${item.qty}</span>
+        <button class="quantity-btn inc-qty" data-id="${item.id}">+</button>
+        <button class="cart-item-remove" data-id="${item.id}" aria-label="Remove item">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+    `;
+
+    // Quantity Handlers
+    itemEl.querySelector(".dec-qty").addEventListener("click", () => {
+      adjustItemQty(item.id, -1);
+    });
+    itemEl.querySelector(".inc-qty").addEventListener("click", () => {
+      adjustItemQty(item.id, 1);
+    });
+    itemEl.querySelector(".cart-item-remove").addEventListener("click", () => {
+      toggleCartItem(item.id);
+    });
+
+    cartList.appendChild(itemEl);
+  });
+
+  // Calculate pricing subtotals
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  let discount = 0;
+
+  if (appliedPromoCode && PROMO_CODES[appliedPromoCode]) {
+    const rule = PROMO_CODES[appliedPromoCode];
+    if (rule.discountPercent) {
+      discount = subtotal * (rule.discountPercent / 100);
+    } else if (rule.discountValue) {
+      discount = Math.min(rule.discountValue, subtotal);
+    }
+    
+    // Apply message
+    promoMsg.className = "promo-applied-msg";
+    promoMsg.innerHTML = `<i class="fa-solid fa-check"></i> ${rule.msg}`;
+    
+    discountRow.style.display = "flex";
+    discountValEl.textContent = `-$${discount.toFixed(2)}`;
+  } else {
+    promoMsg.innerHTML = "";
+    discountRow.style.display = "none";
+  }
+
+  const grandTotal = Math.max(0, subtotal - discount);
+  subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+  totalEl.textContent = `$${grandTotal.toFixed(2)}`;
+}
+
+function adjustItemQty(gameId, delta) {
+  const item = cart.find(item => item.id === gameId);
+  if (!item) return;
+
+  item.qty += delta;
+
+  if (item.qty <= 0) {
+    toggleCartItem(gameId);
+  } else {
+    saveStateToStorage();
+    updateCartUI();
+  }
+}
+
+// ==========================================
+// --- PRODUCT DETAILS MODAL ---
+// ==========================================
+function setupModals() {
+  const modalOverlay = document.getElementById("detailModalOverlay");
+  const closeBtn = document.getElementById("detailCloseBtn");
+  const addToCartBtn = document.getElementById("detailAddToCartBtn");
+
+  closeBtn.addEventListener("click", () => {
+    modalOverlay.classList.remove("open");
+  });
+
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) {
+      modalOverlay.classList.remove("open");
+    }
+  });
+
+  // Tab controls inside details modal
+  const tabBtns = document.querySelectorAll(".detail-tab-btn");
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Toggle button active classes
+      tabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // Show matching target content pane
+      const targetTab = btn.getAttribute("data-tab");
+      const panes = document.querySelectorAll(".detail-tab-pane");
+      panes.forEach(pane => {
+        pane.classList.remove("active");
+      });
+      document.getElementById(`tab-${targetTab}`).classList.add("active");
+    });
+  });
+}
+
+function openDetailModal(gameId) {
+  const game = GAMES_CATALOG.find(g => g.id === gameId);
+  if (!game) return;
+
+  const modalOverlay = document.getElementById("detailModalOverlay");
+  
+  // Title & Developer
+  document.getElementById("detailTitle").textContent = game.title;
+  document.getElementById("detailDeveloperText").innerHTML = `Developer: <strong style="color:var(--text-main);">${game.developer}</strong>`;
+  document.getElementById("detailRatingVal").textContent = game.rating.toFixed(1);
+
+  // Cover image container custom rendering
+  const visualContainer = document.getElementById("detailVisualContainer");
+  visualContainer.innerHTML = createCardCoverVisual(game.coverStyle, game.title);
+
+  // Genre tag pills
+  const tagsContainer = document.getElementById("detailTags");
+  tagsContainer.innerHTML = game.genres.map(g => `<span class="detail-genre-tag">${g}</span>`).join("");
+
+  // Description text
+  document.getElementById("detailDescText").textContent = game.description;
+
+  // Requirements Specs
+  document.getElementById("detailSpecOS").textContent = game.specs.os;
+  document.getElementById("detailSpecCPU").textContent = game.specs.cpu;
+  document.getElementById("detailSpecRAM").textContent = game.specs.ram;
+  document.getElementById("detailSpecGPU").textContent = game.specs.gpu;
+  document.getElementById("detailSpecStorage").textContent = game.specs.storage;
+
+  // Review listings
+  const reviewsContainer = document.getElementById("detailReviewsContainer");
+  reviewsContainer.innerHTML = "";
+  
+  if (game.reviews && game.reviews.length > 0) {
+    game.reviews.forEach(rev => {
+      const revEl = document.createElement("div");
+      revEl.className = "glass-panel";
+      revEl.style.padding = "1rem";
+      revEl.style.fontSize = "0.85rem";
+      revEl.style.borderRadius = "8px";
+
+      let starsHTML = "";
+      for (let i = 1; i <= 5; i++) {
+        const starColor = i <= rev.stars ? "color: var(--accent-amber);" : "color: var(--text-muted);";
+        starsHTML += `<i class="fa-solid fa-star" style="${starColor}"></i> `;
+      }
+
+      revEl.innerHTML = `
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-weight:700;">
+          <span style="color: var(--accent-cyan);">${rev.user}</span>
+          <div>${starsHTML}</div>
+        </div>
+        <p style="color: var(--text-secondary); line-height:1.4;">${rev.comment}</p>
+      `;
+      reviewsContainer.appendChild(revEl);
+    });
+  } else {
+    reviewsContainer.innerHTML = `<p style="color:var(--text-muted); font-size:0.85rem; font-style:italic;">No user logs reviewed yet.</p>`;
+  }
+
+  // Footer Price tag
+  const originalEl = document.getElementById("detailOriginalPrice");
+  const currentEl = document.getElementById("detailCurrentPrice");
+
+  if (game.price === 0) {
+    originalEl.style.display = "none";
+    currentEl.textContent = "FREE";
+    currentEl.className = "current free-price";
+  } else {
+    currentEl.className = "current";
+    if (game.originalPrice > game.price) {
+      originalEl.style.display = "inline";
+      originalEl.textContent = `$${game.originalPrice.toFixed(2)}`;
+    } else {
+      originalEl.style.display = "none";
+    }
+    currentEl.textContent = `$${game.price.toFixed(2)}`;
+  }
+
+  // Buy Button status
+  const buyBtn = document.getElementById("detailAddToCartBtn");
+  const isAlreadyInCart = cart.some(item => item.id === game.id);
+  
+  if (isAlreadyInCart) {
+    buyBtn.textContent = "In Cart (Remove)";
+    buyBtn.classList.add("in-cart");
+  } else {
+    buyBtn.textContent = "Add to Cart";
+    buyBtn.classList.remove("in-cart");
+  }
+
+  // Click listener for details buy button
+  // Clean first to prevent stacking listeners
+  const newBuyBtn = buyBtn.cloneNode(true);
+  buyBtn.parentNode.replaceChild(newBuyBtn, buyBtn);
+
+  newBuyBtn.addEventListener("click", () => {
+    toggleCartItem(game.id);
+    // Refresh details buy button visual state
+    const isNowInCart = cart.some(item => item.id === game.id);
+    if (isNowInCart) {
+      newBuyBtn.textContent = "In Cart (Remove)";
+      newBuyBtn.classList.add("in-cart");
+    } else {
+      newBuyBtn.textContent = "Add to Cart";
+      newBuyBtn.classList.remove("in-cart");
+    }
+  });
+
+  // Reset default Overview tab to active state
+  document.querySelector(".detail-tab-btn[data-tab='overview']").click();
+
+  // Open Modal overlay
+  modalOverlay.classList.add("open");
+}
+
+// ==========================================
+// --- CHECKOUT WIZARD FLOW SYSTEM ---
+// ==========================================
+let checkoutCurrentStep = 1;
+
+function openCheckoutWizard() {
+  const overlay = document.getElementById("checkoutModalOverlay");
+  const backBtn = document.getElementById("checkoutBackBtn");
+  const nextBtn = document.getElementById("checkoutNextBtn");
+  const closeSuccessBtn = document.getElementById("checkoutCloseSuccessBtn");
+  const closeBtn = document.getElementById("checkoutCloseBtn");
+
+  // Reset Step states
+  checkoutCurrentStep = 1;
+  updateCheckoutStepUI();
+
+  // Show Overlay
+  overlay.classList.add("open");
+
+  // Clean form values
+  document.getElementById("checkoutForm").reset();
+
+  // Configure back & close triggers
+  closeBtn.style.display = "flex";
+  closeSuccessBtn.style.display = "none";
+
+  // Re-bind steps navigation
+  const newNextBtn = nextBtn.cloneNode(true);
+  nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+  newNextBtn.addEventListener("click", handleCheckoutNext);
+
+  const newBackBtn = backBtn.cloneNode(true);
+  backBtn.parentNode.replaceChild(newBackBtn, backBtn);
+  newBackBtn.addEventListener("click", handleCheckoutBack);
+
+  const newCloseBtn = closeSuccessBtn.cloneNode(true);
+  closeSuccessBtn.parentNode.replaceChild(newCloseBtn, closeSuccessBtn);
+  newCloseBtn.addEventListener("click", () => {
+    overlay.classList.remove("open");
+    // Switch to My Library tab directly so they can inspect their game key!
+    document.getElementById("navLibraryBtn").click();
+  });
+}
+
+function handleCheckoutNext() {
+  if (checkoutCurrentStep === 1) {
+    // Validate Step 1 Email Inputs
+    const email = document.getElementById("checkoutEmail");
+    const firstName = document.getElementById("checkoutFirstName");
+    const lastName = document.getElementById("checkoutLastName");
+
+    if (!email.checkValidity() || !firstName.value.trim() || !lastName.value.trim()) {
+      showToast("Please fill all billing account fields correctly", "error");
+      return;
+    }
+    checkoutCurrentStep = 2;
+  } else if (checkoutCurrentStep === 2) {
+    // Validate Step 2 Payment Inputs (Sandbox placeholder bypass check)
+    const cardholder = document.getElementById("cardholderName");
+    const cardNum = document.getElementById("cardNumber");
+    const expiry = document.getElementById("cardExpiry");
+    const cvv = document.getElementById("cardCvv");
+
+    if (!cardholder.value.trim() || cardNum.value.trim().length < 12 || !expiry.value.trim() || cvv.value.trim().length < 3) {
+      showToast("Please enter credit card info correctly", "error");
       return;
     }
 
-    const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((difference % (1000 * 60)) / 1000);
-
-    document.getElementById('days').textContent = d.toString().padStart(2, '0');
-    document.getElementById('hours').textContent = h.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = m.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = s.toString().padStart(2, '0');
+    // Process sandbox payment order logs
+    processSimulatedOrder();
+    checkoutCurrentStep = 3;
   }
-
-  updateTimer();
-  setInterval(updateTimer, 1000);
+  updateCheckoutStepUI();
 }
 
-// 7. CATALOG RENDER ENGINE (Search, Filter, Sort)
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  if (!grid) return;
-
-  // Filter products
-  let products = [...PRODUCTS_DATA];
-
-  if (state.activeCategory !== 'all') {
-    products = products.filter(p => p.category === state.activeCategory);
-  }
-
-  if (state.searchQuery.trim() !== '') {
-    const query = state.searchQuery.toLowerCase().trim();
-    products = products.filter(p => 
-      p.name.toLowerCase().includes(query) || 
-      p.category.toLowerCase().includes(query) ||
-      p.styleVibe.toLowerCase().includes(query) ||
-      p.tag.toLowerCase().includes(query)
-    );
-  }
-
-  // Sort products
-  if (state.sortBy === 'price-low') {
-    products.sort((a, b) => a.price - b.price);
-  } else if (state.sortBy === 'price-high') {
-    products.sort((a, b) => b.price - a.price);
-  } else if (state.sortBy === 'rating') {
-    products.sort((a, b) => b.rating - a.rating);
-  }
-
-  if (products.length === 0) {
-    grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1.5rem; color: var(--text-muted);">
-        <i data-lucide="alert-triangle" style="width: 48px; height: 48px; stroke-width: 1.5; margin-bottom: 1rem; color: var(--primary-color);"></i>
-        <h3>NO FITS DETECTED</h3>
-        <p>Try modifying your filters or search keywords.</p>
-      </div>
-    `;
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-    return;
-  }
-
-  grid.innerHTML = products.map(product => {
-    return `
-      <div class="product-card" data-id="${product.id}" data-vibe="${product.styleVibe}">
-        <div class="product-image-wrapper">
-          <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
-          ${product.tag ? `<span class="product-badge">${product.tag}</span>` : ''}
-          <div class="add-to-cart-overlay">
-            <div class="size-selector-grid" data-prod-id="${product.id}">
-              <button class="size-btn active" onclick="selectCardSize(this, 'S')">S</button>
-              <button class="size-btn" onclick="selectCardSize(this, 'M')">M</button>
-              <button class="size-btn" onclick="selectCardSize(this, 'L')">L</button>
-              <button class="size-btn" onclick="selectCardSize(this, 'XL')">XL</button>
-            </div>
-            <button class="add-cart-btn" onclick="triggerCardAddToCart(${product.id})">
-              <i data-lucide="shopping-cart"></i> ADD TO BAG
-            </button>
-          </div>
-        </div>
-        <div class="product-info" onclick="openQuickView(${product.id})">
-          <span class="product-category">${product.category}</span>
-          <h3 class="product-name">${product.name}</h3>
-          <div class="product-meta">
-            <div class="product-rating">
-              <i data-lucide="star" class="star-filled"></i>
-              <span>${product.rating}</span>
-            </div>
-            <span class="product-price">$${product.price.toFixed(2)}</span>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
+function handleCheckoutBack() {
+  if (checkoutCurrentStep > 1) {
+    checkoutCurrentStep--;
+    updateCheckoutStepUI();
   }
 }
 
-// 8. CARD ACTIONS INTERFACES
-// Keep track of active sizes selected per card
-const cardSelectedSizes = {};
-
-window.selectCardSize = function(btn, size) {
-  const parent = btn.parentElement;
-  parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const prodId = parent.dataset.prodId;
-  cardSelectedSizes[prodId] = size;
-};
-
-window.triggerCardAddToCart = function(productId) {
-  const size = cardSelectedSizes[productId] || 'S';
-  addToCart(productId, size);
-};
-
-// 9. CART SYSTEM OPERATIONS
-function toggleCartDrawer() {
-  const drawer = document.getElementById('cartDrawer');
-  const overlay = document.getElementById('cartOverlay');
-  if (drawer && overlay) {
-    drawer.classList.toggle('active');
-    overlay.classList.toggle('active');
-  }
-}
-
-window.closeCartDrawer = function() {
-  const drawer = document.getElementById('cartDrawer');
-  const overlay = document.getElementById('cartOverlay');
-  if (drawer) drawer.classList.remove('active');
-  if (overlay) overlay.classList.remove('active');
-};
-
-window.addToCart = function(productId, size, event) {
-  // If clicked inside lookbook tag, stop propagation
-  if (event) {
-    event.stopPropagation();
-  }
-
-  const product = PRODUCTS_DATA.find(p => p.id === productId);
-  if (!product) return;
-
-  const existing = state.cart.find(item => item.id === productId && item.size === size);
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    state.cart.push({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      size: size,
-      quantity: 1
-    });
-  }
-
-  // Run visual animations on cart badges
-  const badge = document.getElementById('cartBadge');
-  if (badge) {
-    badge.classList.remove('bounce');
-    void badge.offsetWidth; // Trigger reflow for re-run animation
-    badge.classList.add('bounce');
-  }
-
-  updateCartUI();
-
-  // Open cart drawer immediately for positive reinforcement
-  const drawer = document.getElementById('cartDrawer');
-  const overlay = document.getElementById('cartOverlay');
-  if (drawer && !drawer.classList.contains('active')) {
-    drawer.classList.add('active');
-    overlay.classList.add('active');
-  }
-};
-
-window.adjustQuantity = function(productId, size, delta) {
-  const item = state.cart.find(item => item.id === productId && item.size === size);
-  if (!item) return;
-
-  item.quantity += delta;
-  if (item.quantity <= 0) {
-    state.cart = state.cart.filter(i => !(i.id === productId && i.size === size));
-  }
-
-  updateCartUI();
-};
-
-window.removeCartItem = function(productId, size) {
-  state.cart = state.cart.filter(i => !(i.id === productId && i.size === size));
-  updateCartUI();
-};
-
-function updateCartUI() {
-  // Save to LocalStorage
-  try {
-    localStorage.setItem('dripio_cart', JSON.stringify(state.cart));
-  } catch (e) {}
-
-  // Update Counters
-  const totalItemsCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById('cartBadge').textContent = totalItemsCount;
-  document.getElementById('cartCount').textContent = totalItemsCount;
-
-  const container = document.getElementById('cartItemsContainer');
-  const checkoutBtn = document.getElementById('checkoutBtn');
-
-  if (state.cart.length === 0) {
-    container.innerHTML = `
-      <div class="cart-empty-message">
-        <i data-lucide="frown" style="width: 48px; height: 48px; opacity: 0.3; margin-bottom: 1rem; color: var(--primary-color);"></i>
-        <p>Your shopping bag has zero items. No drip.</p>
-        <a href="#shop" class="btn btn-primary btn-sm" style="margin-top: 1rem;" onclick="closeCartDrawer()">Shop Grails</a>
-      </div>
-    `;
-    if (checkoutBtn) checkoutBtn.disabled = true;
-    updateCostBreakdown(0);
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-    return;
-  }
-
-  if (checkoutBtn) checkoutBtn.disabled = false;
-
-  let subtotal = 0;
-
-  container.innerHTML = state.cart.map(item => {
-    const itemTotal = item.price * item.quantity;
-    subtotal += itemTotal;
-
-    return `
-      <div class="cart-item">
-        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-        <div class="cart-item-details">
-          <h4 class="cart-item-name">${item.name}</h4>
-          <p class="cart-item-size">SIZE: ${item.size}</p>
-          <p class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</p>
-          <div class="cart-item-quantity">
-            <button class="qty-btn" onclick="adjustQuantity(${item.id}, '${item.size}', -1)">-</button>
-            <span class="qty-val">${item.quantity}</span>
-            <button class="qty-btn" onclick="adjustQuantity(${item.id}, '${item.size}', 1)">+</button>
-          </div>
-        </div>
-        <button class="cart-item-remove" onclick="removeCartItem(${item.id}, '${item.size}')" aria-label="Remove item">
-          <i data-lucide="trash-2"></i>
-        </button>
-      </div>
-    `;
-  }).join('');
-
-  updateCostBreakdown(subtotal);
-
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-}
-
-function updateCostBreakdown(subtotal) {
-  const discountAmount = subtotal * (state.discountPercent / 100);
-  const taxableTotal = subtotal - discountAmount;
-  
-  // Free shipping over $75 or with free shipping promo code
-  let shippingCost = 10.00;
-  if (subtotal === 0) {
-    shippingCost = 0.00;
-  } else if (subtotal >= 75.00 || state.freeShippingApplied) {
-    shippingCost = 0.00;
-  }
-
-  const finalTotal = taxableTotal + shippingCost;
-
-  document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById('discountPercentage').textContent = `${state.discountPercent}%`;
-  document.getElementById('cartDiscount').textContent = `-$${discountAmount.toFixed(2)}`;
-  document.getElementById('cartShipping').textContent = shippingCost === 0.00 ? 'FREE' : `$${shippingCost.toFixed(2)}`;
-  document.getElementById('cartTotal').textContent = `$${finalTotal.toFixed(2)}`;
-}
-
-// 10. PROMO CODE ENGINE
-function applyPromoCode() {
-  const input = document.getElementById('promoInput').value.trim().toUpperCase();
-  const feedback = document.getElementById('promoFeedback');
-  
-  if (!input) {
-    feedback.className = 'promo-feedback promo-error';
-    feedback.textContent = 'Enter a code first.';
-    return;
-  }
-
-  if (input === 'BUSSIN30') {
-    state.discountPercent = 30;
-    state.promoCode = 'BUSSIN30';
-    feedback.className = 'promo-feedback promo-success';
-    feedback.textContent = 'W! 30% discount applied.';
-  } else if (input === 'NOCAP') {
-    state.freeShippingApplied = true;
-    state.promoCode = 'NOCAP';
-    feedback.className = 'promo-feedback promo-success';
-    feedback.textContent = 'No Cap! Free shipping applied.';
-  } else {
-    feedback.className = 'promo-feedback promo-error';
-    feedback.textContent = 'Invalid aesthetic code. L.';
-  }
-
-  // Refresh cart price listings
-  updateCartUI();
-}
-
-// 11. QUICK VIEW MODAL
-window.openQuickView = function(productId) {
-  const product = PRODUCTS_DATA.find(p => p.id === productId);
-  if (!product) return;
-
-  const content = document.getElementById('qvModalContent');
-  const modal = document.getElementById('quickViewModal');
-
-  content.innerHTML = `
-    <div class="qv-image-wrapper">
-      <img src="${product.image}" alt="${product.name}" class="qv-img">
-    </div>
-    <div class="qv-details-pane">
-      <span class="qv-category">${product.category}</span>
-      <h2 class="qv-name">${product.name}</h2>
-      
-      <div class="qv-rating">
-        ${Array.from({ length: 5 }).map((_, i) => `
-          <i data-lucide="star" class="${i < Math.floor(product.rating) ? 'star-filled' : ''}"></i>
-        `).join('')}
-        <span style="margin-left: 0.5rem; color: var(--text-muted); font-size: 0.85rem;">(${product.rating} / 5.0)</span>
-      </div>
-
-      <span class="qv-price">$${product.price.toFixed(2)}</span>
-      
-      <p class="qv-desc">${product.desc}</p>
-      
-      <div class="qv-size-title">Select Size</div>
-      <div class="size-selector-grid" style="justify-content: flex-start; margin-bottom: 2rem;" data-prod-id="qv-${product.id}">
-        <button class="size-btn active" onclick="selectQvSize(this, 'S')">S</button>
-        <button class="size-btn" onclick="selectQvSize(this, 'M')">M</button>
-        <button class="size-btn" onclick="selectQvSize(this, 'L')">L</button>
-        <button class="size-btn" onclick="selectQvSize(this, 'XL')">XL</button>
-      </div>
-
-      <div class="qv-actions">
-        <button class="btn btn-primary qv-add-btn" onclick="triggerQvAddToCart(${product.id})">
-          <i data-lucide="shopping-bag"></i> ADD TO BAG
-        </button>
-      </div>
-    </div>
-  `;
-
-  // Track initial selected size for this product quickview
-  cardSelectedSizes[`qv-${product.id}`] = 'S';
-
-  modal.classList.add('active');
-  
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-};
-
-window.selectQvSize = function(btn, size) {
-  const parent = btn.parentElement;
-  parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const prodId = parent.dataset.prodId;
-  cardSelectedSizes[prodId] = size;
-};
-
-window.triggerQvAddToCart = function(productId) {
-  const size = cardSelectedSizes[`qv-${productId}`] || 'S';
-  addToCart(productId, size);
-  document.getElementById('quickViewModal').classList.remove('active');
-};
-
-// 12. SEARCH SYSTEM (Catalog searching modal)
-function handleModalSearch(query) {
-  const container = document.getElementById('searchResultsContainer');
-  const q = query.toLowerCase().trim();
-
-  if (!q) {
-    container.innerHTML = '';
-    return;
-  }
-
-  const filtered = PRODUCTS_DATA.filter(p => 
-    p.name.toLowerCase().includes(q) || 
-    p.category.toLowerCase().includes(q) ||
-    p.styleVibe.toLowerCase().includes(q)
-  );
-
-  if (filtered.length === 0) {
-    container.innerHTML = `<div style="padding: 1.5rem; color: var(--text-muted); text-align: center;">No matches found in drop 01.</div>`;
-    return;
-  }
-
-  container.innerHTML = filtered.map(p => `
-    <div class="search-result-item" onclick="onSearchResultClick(${p.id})">
-      <img src="${p.image}" class="search-result-image">
-      <div class="search-result-info">
-        <h5>${p.name}</h5>
-        <span>$${p.price.toFixed(2)}</span>
-      </div>
-    </div>
-  `).join('');
-}
-
-window.onSearchResultClick = function(productId) {
-  document.getElementById('searchModal').classList.remove('active');
-  document.getElementById('modalSearchInput').value = '';
-  document.getElementById('searchResultsContainer').innerHTML = '';
-  
-  // Highlight card
-  const card = document.querySelector(`.product-card[data-id="${productId}"]`);
-  if (card) {
-    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    card.style.borderColor = 'var(--primary-color)';
-    card.style.boxShadow = '0 0 15px var(--primary-glow)';
-    setTimeout(() => {
-      card.style.borderColor = 'var(--border-color)';
-      card.style.boxShadow = 'none';
-    }, 2500);
-  }
-};
-
-// 13. STYLE QUIZ STATE MACHINE (Vibe Checker)
-let quizStep = 0;
-const quizVibes = [];
-
-window.nextQuizStep = function(step) {
-  quizStep = step;
-  
-  // Hide all slides
-  document.querySelectorAll('.quiz-slide').forEach(s => s.classList.remove('active'));
-  
-  // Calculate percentage
-  let progress = 25;
-  let nextSlideId = 'slide-welcome';
-  
-  if (step === 1) {
-    progress = 50;
-    nextSlideId = 'slide-q1';
-  } else if (step === 2) {
-    progress = 75;
-    nextSlideId = 'slide-q2';
-  } else if (step === 3) {
-    progress = 90;
-    nextSlideId = 'slide-q3';
-  } else if (step === 'result') {
-    progress = 100;
-    nextSlideId = 'slide-result';
-    calculateQuizResult();
-  }
-
-  document.getElementById('quizProgress').style.width = `${progress}%`;
-  document.getElementById(nextSlideId).classList.add('active');
-};
-
-window.selectQuizAnswer = function(question, vibeValue, nextStep) {
-  state.vibeQuizAnswers[question] = vibeValue;
-  nextQuizStep(nextStep);
-};
-
-function calculateQuizResult() {
-  const answers = [state.vibeQuizAnswers.q1, state.vibeQuizAnswers.q2, state.vibeQuizAnswers.q3];
-  
-  // Find mode
-  const frequencies = {};
-  let maxVibe = 'streetwear';
-  let maxCount = 0;
-  
-  answers.forEach(val => {
-    if (!val) return;
-    frequencies[val] = (frequencies[val] || 0) + 1;
-    if (frequencies[val] > maxCount) {
-      maxCount = frequencies[val];
-      maxVibe = val;
+function updateCheckoutStepUI() {
+  // Update node colors
+  for (let i = 1; i <= 3; i++) {
+    const node = document.getElementById(`stepNode${i}`);
+    if (i < checkoutCurrentStep) {
+      node.className = "step-node completed";
+      node.innerHTML = `<i class="fa-solid fa-check"></i>`;
+    } else if (i === checkoutCurrentStep) {
+      node.className = "step-node active";
+      node.textContent = i;
+    } else {
+      node.className = "step-node";
+      node.textContent = i;
     }
-  });
-
-  state.vibeResult = maxVibe;
-  
-  // Update Result Details
-  const titleEl = document.getElementById('vibeResultTitle');
-  const descEl = document.getElementById('vibeResultDesc');
-  const containerEl = document.getElementById('recommendedProducts');
-
-  if (maxVibe === 'cyberpunk') {
-    titleEl.textContent = 'CYBERPUNK TECHWEAR';
-    descEl.textContent = 'You thrive in high-contrast neon highlights, futuristic design layers, and heavy techwear accents. You are officially ahead of the curve.';
-  } else if (maxVibe === 'y2k') {
-    titleEl.textContent = 'Y2K RETRO FUTURISM';
-    descEl.textContent = 'Your vibe is dominated by late 90s mall aesthetics, chrome designs, oversized puffers, and tinted wraparound lenses. Nostalgia meets futuristic drip.';
-  } else if (maxVibe === 'minimalist') {
-    titleEl.textContent = 'MINIMALIST / CLEAN AESTHETIC';
-    descEl.textContent = 'You prefer structured lines, organic textures, muted Earth tones, and versatile layouts. Simple but extremely premium.';
-  } else {
-    titleEl.textContent = 'STREETWEAR CORE';
-    descEl.textContent = 'Baggy silos, raw industrial straps, and skaters details define your style. Heavy graphic hoodies and loaded utility pants are your daily uniform.';
   }
 
-  // Load recommendations
-  const recommendedList = PRODUCTS_DATA.filter(p => p.styleVibe === maxVibe).slice(0, 2);
-  
-  containerEl.innerHTML = recommendedList.map(p => `
-    <div class="recommended-item" onclick="openQuickView(${p.id})">
-      <img src="${p.image}" class="rec-img">
-      <div class="rec-info">
-        <h5>${p.name}</h5>
-        <span>$${p.price.toFixed(2)}</span>
-      </div>
-    </div>
-  `).join('');
+  // Update line bar progress width
+  const progressLine = document.getElementById("checkoutProgressLine");
+  if (checkoutCurrentStep === 1) progressLine.style.width = "0%";
+  if (checkoutCurrentStep === 2) progressLine.style.width = "50%";
+  if (checkoutCurrentStep === 3) progressLine.style.width = "100%";
+
+  // Toggle visible pane contents
+  for (let i = 1; i <= 3; i++) {
+    const pane = document.getElementById(`checkoutPane${i}`);
+    if (i === checkoutCurrentStep) {
+      pane.classList.add("active");
+    } else {
+      pane.classList.remove("active");
+    }
+  }
+
+  // Configure navigation buttons
+  const backBtn = document.getElementById("checkoutBackBtn");
+  const nextBtn = document.getElementById("checkoutNextBtn");
+  const closeSuccessBtn = document.getElementById("checkoutCloseSuccessBtn");
+  const closeBtn = document.getElementById("checkoutCloseBtn");
+
+  if (checkoutCurrentStep === 1) {
+    backBtn.style.display = "none";
+    nextBtn.style.display = "inline-flex";
+    nextBtn.textContent = "Continue";
+  } else if (checkoutCurrentStep === 2) {
+    backBtn.style.display = "inline-flex";
+    nextBtn.style.display = "inline-flex";
+    nextBtn.textContent = "Confirm & Purchase";
+  } else { // Step 3: Success Confirmation screen
+    backBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    closeBtn.style.display = "none";
+    closeSuccessBtn.style.display = "inline-flex";
+  }
 }
-
-window.applyVibeFilter = function() {
-  // Update main filter and search keywords to filter matching vibes in shop catalog
-  state.activeCategory = 'all';
-  state.searchQuery = state.vibeResult;
-  
-  // Highlight shop catalog active filter
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.category === 'all');
-  });
-
-  document.getElementById('searchInput').value = state.vibeResult;
-  renderProducts();
-
-  // Scroll to shop
-  document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
-};
-
-window.restartQuiz = function() {
-  state.vibeQuizAnswers = { q1: '', q2: '', q3: '' };
-  nextQuizStep(0);
-};
-
-// 14. CHAT LOOPS REVIEWS SIMULATOR
-function handleChatSendMessage() {
-  const input = document.getElementById('chatInput');
-  const text = input.value.trim();
-  if (!text) return;
-
-  appendChatMessage('You', text, '#8b5cf6', 'dripper_client');
-  input.value = '';
-
-  // Mock bot replies
-  const botReplies = [
-    { name: '@grail_hunter', color: '#10b981', text: 'sheesh that fits insane! 🔥 drop 01 is clean' },
-    { name: '@skate_hard', color: '#f59e0b', text: 'w fits. shipping took like 2 days for me' },
-    { name: '@y2k_aesthetic', color: '#ec4899', text: 'cops items immediately no cap, best fabric ever' },
-    { name: '@admin_drip', color: '#ef4444', text: 'Next Drop timer is ticking down, password for catalog 02 drops in club newsletter soon!' }
-  ];
-
-  const randomReply = botReplies[Math.floor(Math.random() * botReplies.length)];
-  setTimeout(() => {
-    appendChatMessage(randomReply.name, randomReply.text, randomReply.color);
-  }, 1200);
-}
-
-function appendChatMessage(name, text, color, customClass = '') {
-  const container = document.getElementById('chatMessages');
-  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  
-  const msgHtml = `
-    <div class="chat-msg ${customClass}">
-      <div class="user-avatar" style="background-color: ${color};">${name.replace('@', '').slice(0, 2).toUpperCase()}</div>
-      <div class="chat-msg-body">
-        <div class="chat-msg-meta">
-          <span class="username">${name}</span>
-          <span class="time">Today at ${time}</span>
-        </div>
-        <p class="chat-text">${text}</p>
-      </div>
-    </div>
-  `;
-
-  container.insertAdjacentHTML('beforeend', msgHtml);
-  container.scrollTop = container.scrollHeight;
-}
-
-// 15. CHECKOUT FLOW & EXPRESS TRANSACTIONS
-window.simulateExpressPayment = function(method) {
-  const name = method === 'Apple Pay' ? 'Simulated Apple User' : 'Simulated PayPal Client';
-  alert(`⚡ Quick authentication via ${method} approved.`);
-  finalizeSimulatedOrder(name, 'Express Checkout');
-};
 
 function processSimulatedOrder() {
-  const fname = document.getElementById('bill-fname').value;
-  const lname = document.getElementById('bill-lname').value;
-  const cardNum = document.getElementById('card-num').value;
-  
-  const maskedCard = 'Visa ending in ' + cardNum.slice(-4);
-  finalizeSimulatedOrder(fname + ' ' + lname, maskedCard);
+  const keysContainer = document.getElementById("checkoutKeysDeliveryList");
+  keysContainer.innerHTML = "";
+
+  cart.forEach(item => {
+    // Generate activation code
+    const key = generateRandomSerialKey();
+    
+    // Add game and key to User's Library
+    purchasedLibrary.push({
+      id: item.id,
+      title: item.title,
+      key: key,
+      coverStyle: item.coverStyle,
+      purchaseDate: new Date().toLocaleDateString()
+    });
+
+    // Create item display in confirmation modal
+    const keyItem = document.createElement("div");
+    keyItem.className = "purchased-game-key-item";
+    keyItem.innerHTML = `
+      <div class="key-title">${item.title}</div>
+      <div class="key-code-row">
+        <div class="key-code-display" id="key-${item.id}">${key}</div>
+        <button type="button" class="btn-copy-key" data-target="key-${item.id}" aria-label="Copy key to clipboard">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+      </div>
+    `;
+
+    keyItem.querySelector(".btn-copy-key").addEventListener("click", () => {
+      copyTextToClipboard(key);
+    });
+
+    keysContainer.appendChild(keyItem);
+  });
+
+  // Empty checkout cart store
+  cart = [];
+  appliedPromoCode = null;
+  document.getElementById("promoCodeInput").value = "";
+
+  saveStateToStorage();
+  updateCartUI();
+  renderCatalog();
+  showToast("Order completed successfully!", "success");
 }
 
-function finalizeSimulatedOrder(customerName, paymentMethod) {
-  const modal = document.getElementById('checkoutModal');
-  const subtotal = state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const discountAmount = subtotal * (state.discountPercent / 100);
-  
-  let shipping = 10.00;
-  if (subtotal >= 75.00 || state.freeShippingApplied) shipping = 0.00;
+function generateRandomSerialKey() {
+  const segment = () => Math.random().toString(36).substring(2, 6).toUpperCase();
+  return `VRTX-${segment()}-${segment()}-${segment()}`;
+}
 
-  const total = subtotal - discountAmount + shipping;
-  const orderId = 'DRP-' + Math.floor(100000 + Math.random() * 900000);
+// ==========================================
+// --- USER LIBRARY VIEW SYSTEM ---
+// ==========================================
+function renderLibrary() {
+  const gridContainer = document.getElementById("libraryCardGrid");
+  const emptyAlert = document.getElementById("emptyLibraryAlert");
 
-  // Change modal content to Order Success screen
-  const modalBody = document.getElementById('checkoutModalBody');
-  modalBody.innerHTML = `
-    <div class="order-success-body">
-      <div class="success-icon"><i data-lucide="check-circle-2"></i></div>
-      <h2>FIT SECURED!</h2>
-      <p>Your mock order was processed successfully. CONFETTI DEPLOYED!</p>
-      
-      <div class="order-details-summary">
-        <div class="summary-row">
-          <span>Order ID</span>
-          <span style="font-family: monospace; font-weight:700; color:var(--accent-color);">${orderId}</span>
+  if (!gridContainer) return;
+
+  gridContainer.innerHTML = "";
+
+  if (purchasedLibrary.length === 0) {
+    gridContainer.style.display = "none";
+    emptyAlert.style.display = "flex";
+    return;
+  }
+
+  gridContainer.style.display = "grid";
+  emptyAlert.style.display = "none";
+
+  purchasedLibrary.forEach(item => {
+    const cardEl = document.createElement("div");
+    cardEl.className = "library-card glass-panel";
+
+    const customVisual = createCardCoverVisual(item.coverStyle, "");
+
+    cardEl.innerHTML = `
+      <div class="library-card-visual">
+        ${customVisual}
+      </div>
+      <div class="library-card-body">
+        <div class="library-card-info">
+          <h3 class="library-card-title">${item.title}</h3>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Bought on: ${item.purchaseDate}</span>
         </div>
-        <div class="summary-row">
-          <span>Customer</span>
-          <span>${customerName}</span>
+
+        <div class="library-key-copy">
+          <span>${item.key}</span>
+          <i class="fa-solid fa-copy" data-key="${item.key}" aria-label="Copy key"></i>
         </div>
-        <div class="summary-row">
-          <span>Billing Option</span>
-          <span>${paymentMethod}</span>
-        </div>
-        <div class="summary-row">
-          <span>Paid Total</span>
-          <span style="color:var(--accent-color); font-weight:700;">$${total.toFixed(2)}</span>
+
+        <div class="library-actions">
+          <button class="btn btn-secondary install-btn" style="padding:0.6rem; font-size:0.9rem;">
+            <i class="fa-solid fa-download"></i> Install
+          </button>
+          <button class="btn btn-primary play-btn" style="padding:0.6rem; font-size:0.9rem;">
+            <i class="fa-solid fa-play"></i> Play Arcade
+          </button>
         </div>
       </div>
+    `;
 
-      <button class="btn btn-primary btn-block" onclick="completeCheckoutSuccessFlow()">W FIT! CONTINUE SHOPPING</button>
-    </div>
+    // Copy event key
+    cardEl.querySelector(".library-key-copy i").addEventListener("click", () => {
+      copyTextToClipboard(item.key);
+    });
+
+    // Install simulation triggers
+    cardEl.querySelector(".install-btn").addEventListener("click", () => {
+      showToast(`Initializing download client for ${item.title}...`, "success");
+    });
+
+    // Play retro arcade easter egg launcher
+    cardEl.querySelector(".play-btn").addEventListener("click", () => {
+      openArcadeSimulator(item.title);
+    });
+
+    gridContainer.appendChild(cardEl);
+  });
+}
+
+function copyTextToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showToast("Activation key copied to clipboard!", "success");
+  }).catch(() => {
+    showToast("Failed to copy key automatically.", "error");
+  });
+}
+
+// ==========================================
+// --- RETRO ARCADE EASTER EGG GAME CONTROLLER ---
+// ==========================================
+let arcadeGameActive = false;
+let arcadeAnimationId = null;
+
+// Game canvas variables
+let canvas, ctx;
+let playerX = 250;
+const playerY = 270;
+const playerWidth = 36;
+const playerHeight = 15;
+let playerSpeed = 6;
+let keysPressed = {};
+
+let laserProjectiles = [];
+let alienBubbles = [];
+let alienSpawnTimer = 0;
+let arcadeScore = 0;
+let arcadeHighscore = 9999;
+
+function openArcadeSimulator(gameTitle) {
+  const overlay = document.getElementById("arcadeModalOverlay");
+  const closeBtn = document.getElementById("arcadeCloseBtn");
+  const gameTitleHeader = document.getElementById("arcadeGameTitle");
+
+  gameTitleHeader.innerHTML = `ARCADE: <span class="gradient-text">${gameTitle}</span>`;
+  overlay.classList.add("open");
+
+  // Reset emulator panes
+  document.getElementById("arcadeStartMenu").style.display = "flex";
+  document.getElementById("arcadeGameOverMenu").style.display = "none";
+  document.getElementById("arcadeCanvas").style.display = "none";
+
+  // Re-bind click triggers
+  const startBtn = document.getElementById("startArcadeGameBtn");
+  const restartBtn = document.getElementById("restartArcadeGameBtn");
+
+  startBtn.onclick = () => startArcadeGame();
+  restartBtn.onclick = () => startArcadeGame();
+
+  closeBtn.onclick = () => {
+    stopArcadeGame();
+    overlay.classList.remove("open");
+  };
+}
+
+function startArcadeGame() {
+  document.getElementById("arcadeStartMenu").style.display = "none";
+  document.getElementById("arcadeGameOverMenu").style.display = "none";
+  
+  const canvasEl = document.getElementById("arcadeCanvas");
+  canvasEl.style.display = "block";
+
+  canvas = canvasEl;
+  ctx = canvas.getContext("2d");
+
+  // Reset stats
+  playerX = canvas.width / 2 - playerWidth / 2;
+  laserProjectiles = [];
+  alienBubbles = [];
+  alienSpawnTimer = 0;
+  arcadeScore = 0;
+  arcadeGameActive = true;
+
+  // Bind Keyboard Inputs
+  window.addEventListener("keydown", handleArcadeKeyDown);
+  window.addEventListener("keyup", handleArcadeKeyUp);
+
+  // Start loop
+  if (arcadeAnimationId) cancelAnimationFrame(arcadeAnimationId);
+  arcadeAnimationId = requestAnimationFrame(arcadeGameLoop);
+  showToast("Use A/D or Arrow keys to move, SPACEBAR to shoot!", "success");
+}
+
+function handleArcadeKeyDown(e) {
+  keysPressed[e.code] = true;
+  // Prevent browser window scrolling on arrow keys & spacebar
+  if (["ArrowLeft", "ArrowRight", "Space", "KeyA", "KeyD"].includes(e.code)) {
+    e.preventDefault();
+  }
+}
+
+function handleArcadeKeyUp(e) {
+  keysPressed[e.code] = false;
+}
+
+function stopArcadeGame() {
+  arcadeGameActive = false;
+  cancelAnimationFrame(arcadeAnimationId);
+  window.removeEventListener("keydown", handleArcadeKeyDown);
+  window.removeEventListener("keyup", handleArcadeKeyUp);
+  keysPressed = {};
+}
+
+function triggerGameOver() {
+  stopArcadeGame();
+  document.getElementById("arcadeGameOverMenu").style.display = "flex";
+  document.getElementById("arcadeCanvas").style.display = "none";
+  document.getElementById("arcadeFinalScore").textContent = `Your Final Score: ${arcadeScore}`;
+  
+  if (arcadeScore > arcadeHighscore) {
+    arcadeHighscore = arcadeScore;
+    document.querySelector(".arcade-score").textContent = `HIGH SCORE: ${arcadeHighscore}`;
+    showToast("NEW HIGH SCORE!", "success");
+  }
+}
+
+function arcadeGameLoop() {
+  if (!arcadeGameActive) return;
+
+  // Clear Screen
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 1. Move Player Craft
+  if (keysPressed["ArrowLeft"] || keysPressed["KeyA"]) {
+    playerX = Math.max(0, playerX - playerSpeed);
+  }
+  if (keysPressed["ArrowRight"] || keysPressed["KeyD"]) {
+    playerX = Math.min(canvas.width - playerWidth, playerX + playerSpeed);
+  }
+
+  // Shoot lasers
+  if (keysPressed["Space"]) {
+    // Throttle fire rate
+    if (laserProjectiles.length === 0 || laserProjectiles[laserProjectiles.length - 1].y < playerY - 40) {
+      laserProjectiles.push({
+        x: playerX + playerWidth / 2 - 2,
+        y: playerY,
+        width: 4,
+        height: 10,
+        speed: 8
+      });
+    }
+  }
+
+  // 2. Spawn Alien Bubbles
+  alienSpawnTimer++;
+  // Spawn rate scales up slightly as score gets higher
+  const spawnInterval = Math.max(15, 60 - Math.floor(arcadeScore / 100) * 5);
+  if (alienSpawnTimer >= spawnInterval) {
+    alienSpawnTimer = 0;
+    const size = Math.floor(Math.random() * 20) + 15; // 15 to 35 radius
+    alienBubbles.push({
+      x: Math.random() * (canvas.width - size * 2) + size,
+      y: -size,
+      radius: size / 2,
+      speed: Math.random() * 1.5 + 1.2 + (arcadeScore / 150)
+    });
+  }
+
+  // 3. Update Projectiles
+  laserProjectiles.forEach((laser, idx) => {
+    laser.y -= laser.speed;
+    // Remove if off screen
+    if (laser.y < 0) {
+      laserProjectiles.splice(idx, 1);
+    }
+  });
+
+  // 4. Update Aliens & check boundaries
+  for (let i = alienBubbles.length - 1; i >= 0; i--) {
+    const alien = alienBubbles[i];
+    alien.y += alien.speed;
+
+    // Check hit player boundary
+    if (alien.y + alien.radius >= playerY) {
+      triggerGameOver();
+      return;
+    }
+
+    // Check laser hit collisions
+    for (let j = laserProjectiles.length - 1; j >= 0; j--) {
+      const laser = laserProjectiles[j];
+      
+      const dx = laser.x - alien.x;
+      const dy = laser.y - alien.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < alien.radius + 4) {
+        // Destroy alien & laser
+        alienBubbles.splice(i, 1);
+        laserProjectiles.splice(j, 1);
+        arcadeScore += 10;
+        break; // break laser loop, check next alien
+      }
+    }
+  }
+
+  // 5. Drawing elements
+  // Draw Player Ship (Cyan Glowing Polygon)
+  ctx.shadowColor = "#00f0ff";
+  ctx.shadowBlur = 8;
+  ctx.fillStyle = "#00f0ff";
+  ctx.beginPath();
+  ctx.moveTo(playerX + playerWidth / 2, playerY);
+  ctx.lineTo(playerX + playerWidth, playerY + playerHeight);
+  ctx.lineTo(playerX, playerY + playerHeight);
+  ctx.closePath();
+  ctx.fill();
+
+  // Draw Lasers (Pink glows)
+  ctx.shadowColor = "#ff007f";
+  ctx.fillStyle = "#ff007f";
+  laserProjectiles.forEach(laser => {
+    ctx.fillRect(laser.x, laser.y, laser.width, laser.height);
+  });
+
+  // Draw Aliens (Glowing green orbs)
+  ctx.shadowColor = "#00ff66";
+  ctx.fillStyle = "#00ff66";
+  alienBubbles.forEach(alien => {
+    ctx.beginPath();
+    ctx.arc(alien.x, alien.y, alien.radius, 0, Math.PI * 2);
+    ctx.fill();
+    // Inner pulse core details
+    ctx.fillStyle = "#fff";
+    ctx.beginPath();
+    ctx.arc(alien.x - 2, alien.y - 2, alien.radius / 2.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#00ff66"; // Restore fill color style
+  });
+
+  // Reset shadow effects to prevent canvas slowdown
+  ctx.shadowBlur = 0;
+
+  // Draw Score panel overlay
+  ctx.font = "bold 14px monospace";
+  ctx.fillStyle = "#fff";
+  ctx.fillText(`SCORE: ${arcadeScore}`, 15, 25);
+
+  // Request Next Frame
+  arcadeAnimationId = requestAnimationFrame(arcadeGameLoop);
+}
+
+// ==========================================
+// --- TOAST NOTIFICATIONS SYSTEM ---
+// ==========================================
+function showToast(message, type = "success") {
+  const container = document.getElementById("toastContainer");
+  if (!container) return;
+
+  const toast = document.createElement("div");
+  toast.className = `toast toast-${type}`;
+  
+  const icon = type === "success" ? 
+    `<i class="fa-solid fa-circle-check toast-icon"></i>` : 
+    `<i class="fa-solid fa-circle-exclamation toast-icon"></i>`;
+
+  toast.innerHTML = `
+    ${icon}
+    <span>${message}</span>
   `;
 
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
+  container.appendChild(toast);
 
-  // Trigger Confetti!
-  triggerConfettiExplosion();
+  // Trigger browser transition trigger
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 10);
+
+  // Auto remove after 3.5 seconds
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+  }, 3500);
 }
 
-window.completeCheckoutSuccessFlow = function() {
-  // Reset cart state
-  state.cart = [];
-  state.promoCode = '';
-  state.discountPercent = 0;
-  state.freeShippingApplied = false;
+// ==========================================
+// --- DUMMY NEWSLETTER TRIGGERS ---
+// ==========================================
+function setupMiscTriggers() {
+  const heroBuyBtn = document.getElementById("heroBuyBtn");
+  const heroInfoBtn = document.getElementById("heroInfoBtn");
 
-  // Save changes
-  updateCartUI();
-
-  // Reset form modal structure
-  document.getElementById('checkoutModal').classList.remove('active');
-  setTimeout(() => {
-    // Re-render original checkout modal structure
-    const modalBody = document.getElementById('checkoutModalBody');
-    modalBody.innerHTML = `
-      <form id="checkoutForm">
-        <div class="form-section-title">Shipping Credentials</div>
-        <div class="form-row">
-          <div class="field-group">
-            <label for="bill-fname">First Name</label>
-            <input type="text" id="bill-fname" placeholder="John" required>
-          </div>
-          <div class="field-group">
-            <label for="bill-lname">Last Name</label>
-            <input type="text" id="bill-lname" placeholder="Doe" required>
-          </div>
-        </div>
-        <div class="field-group">
-          <label for="bill-address">Delivery Address</label>
-          <input type="text" id="bill-address" placeholder="123 Streetwear Ave, Apt 3" required>
-        </div>
-        <div class="form-row">
-          <div class="field-group">
-            <label for="bill-city">City</label>
-            <input type="text" id="bill-city" placeholder="Los Angeles" required>
-          </div>
-          <div class="field-group">
-            <label for="bill-zip">ZIP / Postal Code</label>
-            <input type="text" id="bill-zip" placeholder="90001" required>
-          </div>
-        </div>
-
-        <div class="form-section-title">Payment Simulator</div>
-        <div class="field-group">
-          <label for="card-num">Card Number</label>
-          <div class="input-icon-wrapper">
-            <i data-lucide="credit-card"></i>
-            <input type="text" id="card-num" placeholder="4111 2222 3333 4444" minlength="16" maxlength="19" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field-group">
-            <label for="card-expiry">Expiry Date</label>
-            <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
-          </div>
-          <div class="field-group">
-            <label for="card-cvv">CVV</label>
-            <input type="text" id="card-cvv" placeholder="123" minlength="3" maxlength="4" required>
-          </div>
-        </div>
-
-        <div class="express-payments">
-          <span class="express-label">OR EXPRESS SIMULATED PAYMENT</span>
-          <div class="express-row">
-            <button type="button" class="btn express-btn apple-pay" onclick="simulateExpressPayment('Apple Pay')">
-              <i data-lucide="smartphone"></i> Apple Pay
-            </button>
-            <button type="button" class="btn express-btn paypal" onclick="simulateExpressPayment('PayPal')">
-              <i data-lucide="send"></i> PayPal
-            </button>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline" id="cancelCheckoutBtn">Cancel</button>
-          <button type="submit" class="btn btn-primary" id="placeOrderBtn">PLACE SIMULATED ORDER</button>
-        </div>
-      </form>
-    `;
-    
-    // Rebind listeners
-    document.getElementById('checkoutForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      processSimulatedOrder();
-    });
-    document.getElementById('cancelCheckoutBtn').addEventListener('click', () => {
-      document.getElementById('checkoutModal').classList.remove('active');
-    });
-    
-    if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
-    }
-  }, 500);
-};
-
-// 16. CANVAS CONFETTI SYSTEM
-let confettiActive = false;
-let confettiPieces = [];
-const confettiColors = ['#9d4edd', '#ccff00', '#00f0ff', '#ff007f', '#ffffff'];
-
-function triggerConfettiExplosion() {
-  const canvas = document.getElementById('confettiCanvas');
-  const ctx = canvas.getContext('2d');
-  
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  canvas.style.display = 'block';
-  
-  confettiPieces = [];
-  confettiActive = true;
-
-  // Populate pieces
-  for (let i = 0; i < 150; i++) {
-    confettiPieces.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * -canvas.height - 20,
-      r: Math.random() * 6 + 4,
-      d: Math.random() * canvas.height,
-      color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
-      tilt: Math.random() * 10 - 5,
-      tiltAngleIncremental: Math.random() * 0.07 + 0.02,
-      tiltAngle: 0
+  // Connect Featured hero panel action links
+  if (heroBuyBtn) {
+    heroBuyBtn.addEventListener("click", () => {
+      // Find NEON HORIZON 2088 game ID in data (g1)
+      toggleCartItem("g1");
     });
   }
 
-  function drawConfetti() {
-    if (!confettiActive) return;
-    
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    let activePiecesLeft = false;
+  if (heroInfoBtn) {
+    heroInfoBtn.addEventListener("click", () => {
+      openDetailModal("g1");
+    });
+  }
 
-    confettiPieces.forEach(p => {
-      p.tiltAngle += p.tiltAngleIncremental;
-      p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
-      p.x += Math.sin(p.tiltAngle);
-      p.tilt = Math.sin(p.tiltAngle - (p.r / 3)) * 15;
-
-      if (p.y < canvas.height) {
-        activePiecesLeft = true;
+  // Setup Credit Card formatting helper triggers during typing in sandbox
+  const ccInput = document.getElementById("cardNumber");
+  if (ccInput) {
+    ccInput.addEventListener("input", (e) => {
+      let val = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+      let formatted = "";
+      for (let i = 0; i < val.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+          formatted += " ";
+        }
+        formatted += val[i];
       }
-
-      ctx.beginPath();
-      ctx.lineWidth = p.r;
-      ctx.strokeStyle = p.color;
-      ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
-      ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
-      ctx.stroke();
+      e.target.value = formatted;
     });
-
-    if (activePiecesLeft) {
-      requestAnimationFrame(drawConfetti);
-    } else {
-      confettiActive = false;
-      canvas.style.display = 'none';
-    }
   }
 
-  drawConfetti();
-  
-  // Disable confetti after 6 seconds to prevent performance leak
-  setTimeout(() => {
-    confettiActive = false;
-    canvas.style.display = 'none';
-  }, 6000);
+  const expiryInput = document.getElementById("cardExpiry");
+  if (expiryInput) {
+    expiryInput.addEventListener("input", (e) => {
+      let val = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+      if (val.length >= 2) {
+        e.target.value = val.substring(0, 2) + "/" + val.substring(2, 4);
+      } else {
+        e.target.value = val;
+      }
+    });
+  }
 }
-
-// Window resize listener for canvas sizing
-window.addEventListener('resize', () => {
-  const canvas = document.getElementById('confettiCanvas');
-  if (canvas && confettiActive) {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-});
