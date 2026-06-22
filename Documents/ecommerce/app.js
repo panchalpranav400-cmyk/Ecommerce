@@ -6,192 +6,471 @@
 const GAMES_CATALOG = [
   {
     id: "g1",
-    title: "NEON HORIZON 2088",
-    price: 29.99,
-    originalPrice: 59.99,
+    title: "GRAND THEFT AUTO V",
+    price: 950,
+    originalPrice: 1999,
     rating: 4.8,
-    popularity: 98,
-    genres: ["RPG", "Action", "Cyberpunk"],
-    developer: "Retrowave Studios",
-    description: "Dive deep into the glowing cyberpunk underbelly of Neo-Detroit in this critically acclaimed open-world action RPG. Hack cybernetic implants, upgrade neon weaponry, and decide the fate of megacorporations in a branching storyline featuring a futuristic synthwave soundtrack.",
+    popularity: 99,
+    genres: ["Action", "Adventure"],
+    developer: "Rockstar Games",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg",
+    description: "When a young street hustler, a retired bank robber and a terrifying psychopath find themselves entangled with some of the most frightening and deranged elements of the underworld, the U.S. government and the entertainment industry, they must pull off a series of dangerous heists to survive in a ruthless city in which they can trust nobody, least of all each other.",
     specs: {
-      os: "Windows 10/11 64-bit",
-      cpu: "Intel Core i7-9700K / AMD Ryzen 5 3600",
-      ram: "16 GB RAM",
-      gpu: "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT",
-      storage: "50 GB SSD available space"
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5 3470 / AMD FX 8350",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GTX 660 2GB / AMD HD 7870 2GB",
+      storage: "90 GB available space"
     },
     reviews: [
-      { user: "CyberDeck_42", stars: 5, comment: "Hands down the best cyberpunk RPG of the decade. The city styling is gorgeous, and the lighting is unreal!" },
-      { user: "SynthWaver", stars: 4, comment: "Amazing soundtrack and fluid gunplay. Had a few minor sandbox glitches, but the depth is unmatched." }
+      { user: "LosSantosBiker", stars: 5, comment: "Over a decade old and still one of the best open world games ever made." },
+      { user: "HeistMaster", stars: 4, comment: "Single player story is excellent. Online is fun but a bit grindy." }
     ],
-    coverStyle: "cyberpunk"
+    coverStyle: "aero-racer"
   },
   {
     id: "g2",
-    title: "SHADOW ODYSSEY",
-    price: 19.99,
-    originalPrice: 39.99,
-    rating: 4.6,
-    popularity: 87,
-    genres: ["Adventure", "Action", "RPG"],
-    developer: "Moonlight Interactive",
-    description: "Embark on a dark fantasy journey through shattered cosmic dimensions. As the Last Sentinel, navigate atmospheric medieval ruins, battle terrifying void behemoths, and retrieve the eternal embers to light the celestial heart.",
+    title: "RED DEAD REDEMPTION 2",
+    price: 1055,
+    originalPrice: 3199,
+    rating: 4.9,
+    popularity: 98,
+    genres: ["Action", "Adventure"],
+    developer: "Rockstar Games",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1174180/header.jpg",
+    description: "Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores, Red Dead Redemption 2 is an epic tale of honor and loyalty at the dawn of the modern age.",
     specs: {
-      os: "Windows 10 64-bit",
-      cpu: "Intel Core i5-8400 / AMD Ryzen 5 2600",
-      ram: "8 GB RAM",
-      gpu: "NVIDIA GeForce GTX 1660 / AMD Radeon RX 590",
-      storage: "30 GB available space"
-    },
-    reviews: [
-      { user: "DarkSoulsFan", stars: 5, comment: "Atmosphere is incredibly dense. Combat is punishing but extremely fair and rewarding!" },
-      { user: "GamerDad", stars: 4, comment: "Beautiful art direction. Wish the fast travel system was slightly faster, but the visual world is wonderful." }
-    ],
-    coverStyle: "dark-fantasy"
-  },
-  {
-    id: "g3",
-    title: "CHRONO RIFT",
-    price: 0.00, // FREE
-    originalPrice: 0.00,
-    rating: 4.5,
-    popularity: 92,
-    genres: ["Strategy", "Indie"],
-    developer: "Paradox Loop",
-    description: "A mind-bending tactical time-manipulation game where your previous turns run parallel to your enemies. Plan actions down to the millisecond, record clones of your timeline, and outsmart complex defense nodes in this highly acclaimed sci-fi puzzle shooter.",
-    specs: {
-      os: "Windows 7/10/11 64-bit",
-      cpu: "Intel Core i5-4460 / AMD FX-6300",
-      ram: "8 GB RAM",
-      gpu: "NVIDIA GeForce GTX 1050 / AMD Radeon RX 560",
-      storage: "12 GB available space"
-    },
-    reviews: [
-      { user: "TimeSplitter", stars: 5, comment: "Insanely clever gameplay loop! Plotting moves alongside your own past actions is brilliant." },
-      { user: "IndieLover", stars: 4, comment: "Short but incredibly dense with genius mechanics. And it is completely free to play!" }
-    ],
-    coverStyle: "time-rift"
-  },
-  {
-    id: "g4",
-    title: "STARMINER INFINITE",
-    price: 14.99,
-    originalPrice: 24.99,
-    rating: 4.3,
-    popularity: 76,
-    genres: ["Strategy", "Simulation", "Indie"],
-    developer: "AstroForge Corp",
-    description: "Automate massive galactic mining space stations, optimize hyperlane conveyor grids, and defend your drill rings from aggressive alien pirate swarms in a fully procedurally generated asteroid belt universe. Scale production to dominate the system economy.",
-    specs: {
-      os: "Windows 10 64-bit",
-      cpu: "Intel Core i5-7600K / AMD Ryzen 3 3100",
+      os: "Windows 10",
+      cpu: "Intel Core i7-4770K / AMD Ryzen 5 1500X",
       ram: "12 GB RAM",
-      gpu: "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
-      storage: "15 GB available space"
+      gpu: "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 480 4GB",
+      storage: "150 GB available space"
     },
     reviews: [
-      { user: "FactoryFix", stars: 5, comment: "If you love games like Factorio and space simulations, this is pure digital crack. Highly addictive." },
-      { user: "SpacePirate", stars: 4, comment: "Automation systems work beautifully. Combat could be slightly deeper, but expansion mechanics are stellar." }
-    ],
-    coverStyle: "space-industry"
-  },
-  {
-    id: "g5",
-    title: "TACTICAL BREACH: ZERO",
-    price: 9.99,
-    originalPrice: 19.99,
-    rating: 4.7,
-    popularity: 91,
-    genres: ["Shooter", "Action"],
-    developer: "Ironclad Games",
-    description: "A high-stakes tactical first-person shooter where every sound count. Design breach plans, set charge lines, execute room clears, and defuse critical nodes. Play solo with advanced AI squads or coordinate with friends in intense multiplayer operations.",
-    specs: {
-      os: "Windows 10/11 64-bit",
-      cpu: "Intel Core i7-6700K / AMD Ryzen 5 1600",
-      ram: "16 GB RAM",
-      gpu: "NVIDIA GeForce GTX 1070 / AMD Radeon RX Vega 56",
-      storage: "40 GB available space"
-    },
-    reviews: [
-      { user: "BreachMaster", stars: 5, comment: "Slow, methodical, tense, and absolutely brilliant. Communication is key to win." },
-      { user: "NoobShooter", stars: 4, comment: "Tough learning curve, but once you learn how to lean, slice the pie, and coordinate breaches, it is unbeatable." }
-    ],
-    coverStyle: "tactical"
-  },
-  {
-    id: "g6",
-    title: "ROGUE CELL",
-    price: 12.99,
-    originalPrice: 12.99,
-    rating: 4.4,
-    popularity: 81,
-    genres: ["Indie", "Action", "RPG"],
-    developer: "NanoPixel Studio",
-    description: "Fight through ever-shifting synthwave dungeons in this rogue-like hack-and-slash. Hack genetic structures to upgrade your mutation modules with every death, collect pixelated relics, and battle bio-mechanical cellular guards.",
-    specs: {
-      os: "Windows 7/10/11",
-      cpu: "Dual Core 2.0 GHz",
-      ram: "8 GB RAM",
-      gpu: "Integrated Graphics compatible with Shader Model 4.0",
-      storage: "5 GB available space"
-    },
-    reviews: [
-      { user: "RogueRunner", stars: 5, comment: "Insanely fast pacing, high difficulty, and a mind-blowing synthwave aesthetic. Runs on a potato!" },
-      { user: "CellGamer", stars: 4, comment: "Very tight controls and cool mutation builds. Highly recommend for quick gaming sessions." }
-    ],
-    coverStyle: "rogue-cell"
-  },
-  {
-    id: "g7",
-    title: "EXO-COLONY: MARS",
-    price: 24.99,
-    originalPrice: 49.99,
-    rating: 4.2,
-    popularity: 79,
-    genres: ["Strategy", "Simulation"],
-    developer: "RedPlanet Labs",
-    description: "Establish the first self-sustaining human colony on Mars. Manage complex atmospheric generators, water recycling grids, greenhouse crop arrays, and defense structures against Martian dust storms. Balance resource quotas with citizen sanity.",
-    specs: {
-      os: "Windows 10 64-bit",
-      cpu: "Intel Core i7-8700 / AMD Ryzen 5 3600X",
-      ram: "16 GB RAM",
-      gpu: "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700",
-      storage: "25 GB available space"
-    },
-    reviews: [
-      { user: "MartianMan", stars: 4, comment: "Extremely detailed management system. Hard difficulty spikes during dust storms, but rewarding colony growth." }
+      { user: "OutlawArthur", stars: 5, comment: "A masterpiece of storytelling and immersion. The world feels completely alive." }
     ],
     coverStyle: "mars-colony"
   },
   {
-    id: "g8",
-    title: "AERO RACER NEO",
-    price: 4.99,
-    originalPrice: 14.99,
-    rating: 4.5,
-    popularity: 85,
-    genres: ["Action", "Indie"],
-    developer: "Velocity Labs",
-    description: "Defy gravity in high-velocity anti-grav crafts racing across supersonic sky tracks at breakneck speeds. Evade laser traps, weaponize energy boosts, and dominate global leaderboards in this glowing futuristic retro racer.",
+    id: "g3",
+    title: "CYBERPUNK 2077",
+    price: 1499,
+    originalPrice: 2999,
+    rating: 4.7,
+    popularity: 97,
+    genres: ["RPG", "Action", "Adventure"],
+    developer: "CD PROJEKT RED",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1091500/header.jpg",
+    description: "Cyberpunk 2077 is an open-world, action-adventure RPG set in the megalopolis of Night City, where you play as a cyberpunk mercenary wrapped up in a do-or-die fight for survival.",
     specs: {
-      os: "Windows 10/11",
-      cpu: "Intel Core i5-6500 / AMD Ryzen 3 1200",
-      ram: "8 GB RAM",
-      gpu: "NVIDIA GeForce GTX 1060 / AMD Radeon RX 470",
-      storage: "10 GB available space"
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-9700K / AMD Ryzen 5 3600",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700 XT",
+      storage: "70 GB SSD available space"
     },
     reviews: [
-      { user: "SpeedDemon", stars: 5, comment: "Felt like Wipeout combined with modern cyberpunk. Adrenaline rush from start to finish!" }
+      { user: "Chooh2_Sniffer", stars: 5, comment: "Night City is the absolute pinnacle of virtual world design. Fully fixed and runs beautifully now." }
+    ],
+    coverStyle: "cyberpunk"
+  },
+  {
+    id: "g4",
+    title: "THE WITCHER 3: WILD HUNT",
+    price: 399,
+    originalPrice: 999,
+    rating: 4.9,
+    popularity: 96,
+    genres: ["RPG", "Adventure"],
+    developer: "CD PROJEKT RED",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg",
+    description: "You are Geralt of Rivia, mercenary monster slayer. Before you stands a war-torn, monster-infested continent you can explore at will. Your current contract? Tracking down Ciri — the Child of Prophecy, a living weapon that can alter the shape of the world.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-2500K / AMD Phenom II X4 940",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GTX 770 / AMD Radeon R9 290",
+      storage: "50 GB available space"
+    },
+    reviews: [
+      { user: "WhiteWolf", stars: 5, comment: "The quest writing in this game sets the bar for every RPG ever made." }
+    ],
+    coverStyle: "dark-fantasy"
+  },
+  {
+    id: "g5",
+    title: "ELDEN RING",
+    price: 1499,
+    originalPrice: 2499,
+    rating: 4.9,
+    popularity: 98,
+    genres: ["RPG", "Action"],
+    developer: "FromSoftware",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1245620/header.jpg",
+    description: "Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.",
+    specs: {
+      os: "Windows 10",
+      cpu: "Intel Core i5-8400 / AMD Ryzen 3 3300X",
+      ram: "12 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1060 3GB / AMD Radeon RX 580 4GB",
+      storage: "60 GB available space"
+    },
+    reviews: [
+      { user: "TarnishedOne", stars: 5, comment: "One of the greatest open world exploration experiences ever designed. Outstanding boss designs." }
+    ],
+    coverStyle: "dark-fantasy"
+  },
+  {
+    id: "g6",
+    title: "GOD OF WAR RAGNARÖK",
+    price: 2999,
+    originalPrice: 3999,
+    rating: 4.8,
+    popularity: 95,
+    genres: ["Action", "Adventure"],
+    developer: "Santa Monica Studio",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2322010/header.jpg",
+    description: "Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for a prophesied battle that will end the world.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-4670K / AMD Ryzen 5 1600X",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GTX 1060 6GB / AMD RX 580 8GB",
+      storage: "190 GB SSD available space"
+    },
+    reviews: [
+      { user: "BoyMimir", stars: 5, comment: "Incredibly polished combat mechanics, stellar narrative pacing, and father-son character arcs." }
+    ],
+    coverStyle: "dark-fantasy"
+  },
+  {
+    id: "g7",
+    title: "MARVEL'S SPIDER-MAN 2",
+    price: 3299,
+    originalPrice: 3999,
+    rating: 4.8,
+    popularity: 94,
+    genres: ["Action", "Adventure"],
+    developer: "Insomniac Games",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1817070/header.jpg",
+    description: "Spider-Men Peter Parker and Miles Morales face the ultimate test of strength inside and outside the mask as they fight to save the city, each other and the ones they love from the monstrous Venom.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i5-8600K / AMD Ryzen 5 3600",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA RTX 2060 / AMD RX 5700",
+      storage: "85 GB SSD available space"
+    },
+    reviews: [
+      { user: "WebSlinger", stars: 5, comment: "Web wings make traversal extremely fast. Story hits hard!" }
     ],
     coverStyle: "aero-racer"
+  },
+  {
+    id: "g8",
+    title: "HORIZON FORBIDDEN WEST",
+    price: 2399,
+    originalPrice: 3999,
+    rating: 4.7,
+    popularity: 91,
+    genres: ["Action", "RPG", "Adventure"],
+    developer: "Guerrilla",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2109440/header.jpg",
+    description: "Explore distant lands, fight bigger and more awe-inspiring machines, and encounter astonishing new tribes as you return to the far-future, post-apocalyptic world of Horizon.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-2500K / AMD FX-8350",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1650 4GB / AMD Radeon RX 5500 XT 4GB",
+      storage: "150 GB available space"
+    },
+    reviews: [
+      { user: "MachineHunter", stars: 4, comment: "Visuals are next-level. Combat system is expanded and very tactical." }
+    ],
+    coverStyle: "mars-colony"
+  },
+  {
+    id: "g9",
+    title: "STARFIELD",
+    price: 1999,
+    originalPrice: 3999,
+    rating: 4.0,
+    popularity: 82,
+    genres: ["RPG", "Adventure"],
+    developer: "Bethesda Game Studios",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1716740/header.jpg",
+    description: "In this next-generation role-playing game set amongst the stars, create any character you want and explore with unparalleled freedom as you embark on an epic journey to answer humanity’s greatest mystery.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-6800K / AMD Ryzen 5 2600X",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce RTX 2080 / AMD Radeon RX 6800 XT",
+      storage: "125 GB SSD available space"
+    },
+    reviews: [
+      { user: "ConstellationX", stars: 4, comment: "Ship building is amazing. Loading screens are a bit frequent, but scale is massive." }
+    ],
+    coverStyle: "space-industry"
+  },
+  {
+    id: "g10",
+    title: "ASSASSIN'S CREED SHADOWS",
+    price: 4799,
+    originalPrice: 4799,
+    rating: 4.4,
+    popularity: 90,
+    genres: ["Action", "RPG", "Adventure"],
+    developer: "Ubisoft",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2208920/header.jpg",
+    description: "Live the intertwined stories of Naoe, an adept shinobi Assassin from Iga Province, and Yasuke, the powerful samurai of historical legend, in late Sengoku-period Japan.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-8700K / AMD Ryzen 5 3600",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT",
+      storage: "100 GB SSD available space"
+    },
+    reviews: [
+      { user: "ShinobiYasuke", stars: 4, comment: "Playing Yasuke is very brutal, while Naoe stealth is fantastic. Great combo." }
+    ],
+    coverStyle: "tactical"
+  },
+  {
+    id: "g11",
+    title: "CALL OF DUTY: BLACK OPS 6",
+    price: 5599,
+    originalPrice: 5599,
+    rating: 4.6,
+    popularity: 95,
+    genres: ["Action", "Shooter"],
+    developer: "Treyarch, Raven Software",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2933620/header.jpg",
+    description: "Forced to go rogue. Hunted from within. Developed by Treyarch and Raven, Black Ops 6 is a spy action thriller set in the early 90s, featuring a mind-bending Campaign, class-leading Multiplayer, and the return of Round-Based Zombies.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-6700K / AMD Ryzen 5 1600X",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1080 / AMD Radeon RX 5700 XT",
+      storage: "102 GB SSD available space"
+    },
+    reviews: [
+      { user: "PrestigeMaster", stars: 5, comment: "Omnimovement is a game changer! Best multiplayer gameplay in years." }
+    ],
+    coverStyle: "tactical"
+  },
+  {
+    id: "g12",
+    title: "BATTLEFIELD 2042",
+    price: 359,
+    originalPrice: 2999,
+    rating: 3.8,
+    popularity: 78,
+    genres: ["Action", "Shooter"],
+    developer: "DICE",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1517290/header.jpg",
+    description: "Battlefield 2042 is a first-person shooter that marks the return to the iconic all-out warfare of the franchise. In a near-future world transformed by disorder, adapt and overcome dynamically-changing battlegrounds with the help of your squad.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5 6600K / AMD Ryzen 5 1600",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1050 Ti / AMD Radeon RX 560",
+      storage: "100 GB available space"
+    },
+    reviews: [
+      { user: "BFVeteran", stars: 3, comment: "Much better now than launch, but still missing some classic class structures. Gunplay is decent." }
+    ],
+    coverStyle: "tactical"
+  },
+  {
+    id: "g13",
+    title: "HALO INFINITE",
+    price: 0,
+    originalPrice: 0,
+    rating: 4.2,
+    popularity: 84,
+    genres: ["Action", "Shooter"],
+    developer: "343 Industries",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1240440/header.jpg",
+    description: "When all hope is lost and humanity's fate hangs in the balance, the Master Chief is ready to confront the most ruthless foe he's ever faced. Step inside the armor of humanity's greatest hero to experience an epic adventure.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-4440 / AMD Ryzen 5 1600",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GTX 1050 Ti / AMD RX 570",
+      storage: "50 GB available space"
+    },
+    reviews: [
+      { user: "MasterChief117", stars: 4, comment: "Multiplayer is fast-paced, classic arena action. Grappleshot is amazing!" }
+    ],
+    coverStyle: "space-industry"
+  },
+  {
+    id: "g14",
+    title: "FORZA HORIZON 5",
+    price: 1749,
+    originalPrice: 3499,
+    rating: 4.8,
+    popularity: 93,
+    genres: ["Action", "Adventure"],
+    developer: "Playground Games",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1551360/header.jpg",
+    description: "Your Ultimate Horizon Adventure awaits! Explore the vibrant and ever-evolving open world landscapes of Mexico with limitless, fun driving action in hundreds of the world’s greatest cars.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-4460 / AMD Ryzen 3 1200",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GTX 1060 3GB / AMD RX 470 4GB",
+      storage: "110 GB available space"
+    },
+    reviews: [
+      { user: "V8Gamer", stars: 5, comment: "Stunning graphics, incredible sound design, and a massive car selection." }
+    ],
+    coverStyle: "aero-racer"
+  },
+  {
+    id: "g15",
+    title: "FINAL FANTASY XVI",
+    price: 3999,
+    originalPrice: 3999,
+    rating: 4.6,
+    popularity: 89,
+    genres: ["RPG", "Action"],
+    developer: "Square Enix",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2737340/header.jpg",
+    description: "An epic dark fantasy world where the fate of the land is decided by the mighty Eikons and the Dominants who wield them. This is the story of Clive Rosfield, a warrior granted the title 'First Shield of Rosaria'.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-8700 / AMD Ryzen 7 5700X",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA RTX 2060 / AMD Radeon RX 5700",
+      storage: "170 GB SSD available space"
+    },
+    reviews: [
+      { user: "EikonBattler", stars: 5, comment: "Visual spectacles in boss fights are jaw-dropping. Combat feels very fluid." }
+    ],
+    coverStyle: "rogue-cell"
+  },
+  {
+    id: "g16",
+    title: "RESIDENT EVIL 4",
+    price: 2099,
+    originalPrice: 2999,
+    rating: 4.9,
+    popularity: 94,
+    genres: ["Action", "Adventure"],
+    developer: "CAPCOM Co., Ltd.",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2050650/header.jpg",
+    description: "Survival is just the beginning. Six years have passed since the biological disaster in Raccoon City. Leon S. Kennedy, one of the survivors, has been sent to rescue the president's kidnapped daughter.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i5-7500 / AMD Ryzen 3 1200",
+      ram: "8 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 560 4GB",
+      storage: "60 GB available space"
+    },
+    reviews: [
+      { user: "RE4Fanatic", stars: 5, comment: "Perfect remake. Retains everything good about the original while modernizing the controls and graphics." }
+    ],
+    coverStyle: "dark-fantasy"
+  },
+  {
+    id: "g17",
+    title: "DEAD SPACE",
+    price: 1049,
+    originalPrice: 3499,
+    rating: 4.8,
+    popularity: 88,
+    genres: ["Action", "Adventure", "Shooter"],
+    developer: "Motive",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1693980/header.jpg",
+    description: "The sci-fi survival-horror classic returns, completely rebuilt from the ground up to offer a deeper, more immersive experience — including visual, audio, and gameplay improvements.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-8600K / AMD Ryzen 5 2600x",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GTX 1070 / AMD RX 5700",
+      storage: "50 GB SSD available space"
+    },
+    reviews: [
+      { user: "IsaacPlasma", stars: 5, comment: "Atmosphere is terrifying. The sound design is top tier!" }
+    ],
+    coverStyle: "space-industry"
+  },
+  {
+    id: "g18",
+    title: "DRAGON'S DOGMA 2",
+    price: 3359,
+    originalPrice: 4799,
+    rating: 4.1,
+    popularity: 86,
+    genres: ["RPG", "Action", "Adventure"],
+    developer: "CAPCOM Co., Ltd.",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2054970/header.jpg",
+    description: "Dragon's Dogma 2 is a single-player, narrative driven action-RPG that challenges the players to choose their own experience — from the appearance of their Arisen, their vocation, their party, how to approach different situations and more.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i5-10600 / AMD Ryzen 5 3600",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1070 / AMD Radeon RX 5280",
+      storage: "100 GB SSD available space"
+    },
+    reviews: [
+      { user: "PawnCommander", stars: 4, comment: "Incredible physics and pawn mechanics. Performance can be rough in cities, but combat is amazing." }
+    ],
+    coverStyle: "dark-fantasy"
+  },
+  {
+    id: "g19",
+    title: "GHOST OF TSUSHIMA",
+    price: 3199,
+    originalPrice: 3999,
+    rating: 4.9,
+    popularity: 96,
+    genres: ["Action", "Adventure"],
+    developer: "Sucker Punch Productions",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2215430/header.jpg",
+    description: "In late 13th century, the Mongol empire has laid waste to entire nations along their campaign to conquer the East. Tsushima Island is all that stands between mainland Japan and a massive Mongol invasion fleet.",
+    specs: {
+      os: "Windows 10 64-bit",
+      cpu: "Intel Core i5-2500K / AMD FX-8320",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 8GB",
+      storage: "75 GB SSD available space"
+    },
+    reviews: [
+      { user: "SamuraiJin", stars: 5, comment: "Sensational combat, gorgeous wind-guided exploration, and a moving story." }
+    ],
+    coverStyle: "tactical"
+  },
+  {
+    id: "g20",
+    title: "DEATH STRANDING 2: ON THE BEACH",
+    price: 3999,
+    originalPrice: 3999,
+    rating: 4.8,
+    popularity: 92,
+    genres: ["Action", "Adventure"],
+    developer: "KOJIMA PRODUCTIONS",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1850570/header.jpg",
+    description: "Embark on an inspiring mission of human connection beyond the UCA. Sam and his companions set out on a new journey to save humanity from extinction. Explore a world ravaged by otherworldly enemies.",
+    specs: {
+      os: "Windows 10/11 64-bit",
+      cpu: "Intel Core i7-7700K / AMD Ryzen 5 2600",
+      ram: "16 GB RAM",
+      gpu: "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700 XT",
+      storage: "150 GB SSD available space"
+    },
+    reviews: [
+      { user: "KojimaIsGod", stars: 5, comment: "Cinema quality storytelling. Traversal mechanics are even more engaging this time!" }
+    ],
+    coverStyle: "time-rift"
   }
 ];
 
 // --- APP STATE ---
 let cart = [];
 let activeGenres = new Set();
-let maxPriceLimit = 100;
+let maxPriceLimit = 6000;
 let searchQueryStr = "";
 let currentSort = "popularity";
 let currentTab = "store";
@@ -202,7 +481,7 @@ let appliedPromoCode = null;
 const PROMO_CODES = {
   "VORTEX50": { discountPercent: 50, msg: "50% VORTEX SPECIAL APPLIED!" },
   "CYBER20": { discountPercent: 20, msg: "20% CYBERPUNK DISCOUNT APPLIED!" },
-  "FREEPLAY": { discountValue: 10, msg: "$10.00 CASH DISCOUNT APPLIED!" }
+  "FREEPLAY": { discountValue: 500, msg: "₹500.00 CASH DISCOUNT APPLIED!" }
 };
 
 // ==========================================
@@ -214,6 +493,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Draw initial catalog
   renderCatalog();
+  renderHero();
   updateCartUI();
 
   // Register Navigation Handlers
@@ -264,7 +544,17 @@ function saveStateToStorage() {
 // ==========================================
 // Since the image model is exhausted, this procedural engine creates distinct,
 // highly beautiful and vibrant cyberpunk/scifi SVG layouts dynamically to cover games.
-function createCardCoverVisual(styleType, title) {
+function createCardCoverVisual(styleType, title, imageUrl) {
+  if (imageUrl) {
+    return `
+      <img src="${imageUrl}" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0; transition: var(--transition-smooth); z-index:0;" class="card-visual-img" alt="${title}">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(6,4,13,0.9) 0%, rgba(6,4,13,0.2) 60%, transparent 100%); z-index:1;"></div>
+      <div style="position:absolute; bottom:1rem; left:1rem; right:1rem; z-index:2; text-shadow:0 2px 4px rgba(0,0,0,0.8);">
+        <div style="font-family:Outfit; font-size:1.15rem; font-weight:800; color:white; line-height:1.2; text-transform:uppercase;">${title}</div>
+      </div>
+    `;
+  }
+
   let innerSVG = "";
   
   if (styleType === "cyberpunk") {
@@ -498,10 +788,10 @@ function renderCatalog() {
       priceHTML = `<span class="current-price free-price">FREE</span>`;
     } else {
       const originalHTML = game.originalPrice > game.price ? 
-        `<span class="original-price">$${game.originalPrice.toFixed(2)}</span>` : "";
+        `<span class="original-price">₹${game.originalPrice.toLocaleString('en-IN')}</span>` : "";
       priceHTML = `
         ${originalHTML}
-        <span class="current-price">$${game.price.toFixed(2)}</span>
+        <span class="current-price">₹${game.price.toLocaleString('en-IN')}</span>
       `;
     }
 
@@ -509,7 +799,7 @@ function renderCatalog() {
     const genresHTML = game.genres.map(g => `<span>${g}</span>`).join("");
 
     // Setup cover element visual
-    const coverArtHTML = createCardCoverVisual(game.coverStyle, game.title);
+    const coverArtHTML = createCardCoverVisual(game.coverStyle, game.title, game.image);
 
     cardEl.innerHTML = `
       <div class="card-img-wrapper">
@@ -649,7 +939,7 @@ function setupFilters() {
   // Price range slider
   priceSlider.addEventListener("input", (e) => {
     maxPriceLimit = parseFloat(e.target.value);
-    priceDisplay.textContent = `$${maxPriceLimit.toFixed(2)}`;
+    priceDisplay.textContent = `₹${maxPriceLimit.toLocaleString('en-IN')}`;
     renderCatalog();
     renderActiveFilterTags();
   });
@@ -668,9 +958,9 @@ function setupFilters() {
     activeGenres.clear();
     genreCheckboxes.forEach(chk => chk.checked = false);
 
-    priceSlider.value = 100;
-    maxPriceLimit = 100;
-    priceDisplay.textContent = "$100.00";
+    priceSlider.value = 6000;
+    maxPriceLimit = 6000;
+    priceDisplay.textContent = "₹6,000";
 
     renderCatalog();
     renderActiveFilterTags();
@@ -714,13 +1004,13 @@ function renderActiveFilterTags() {
   });
 
   // Max price tag
-  if (maxPriceLimit < 100) {
+  if (maxPriceLimit < 6000) {
     activeCount++;
-    createFilterTag(container, `Max: $${maxPriceLimit.toFixed(0)}`, () => {
+    createFilterTag(container, `Max: ₹${maxPriceLimit.toLocaleString('en-IN')}`, () => {
       const priceSlider = document.getElementById("priceRangeSlider");
-      priceSlider.value = 100;
-      maxPriceLimit = 100;
-      document.getElementById("priceSliderVal").textContent = "$100.00";
+      priceSlider.value = 6000;
+      maxPriceLimit = 6000;
+      document.getElementById("priceSliderVal").textContent = "₹6,000";
       renderCatalog();
       renderActiveFilterTags();
     });
@@ -807,6 +1097,7 @@ function toggleCartItem(gameId) {
       price: game.price,
       genres: game.genres,
       coverStyle: game.coverStyle,
+      image: game.image,
       qty: 1
     });
     showToast(`Added "${game.title}" to cart`, "success");
@@ -859,7 +1150,7 @@ function updateCartUI() {
     const itemEl = document.createElement("div");
     itemEl.className = "cart-item";
 
-    const customVisual = createCardCoverVisual(item.coverStyle, "");
+    const customVisual = createCardCoverVisual(item.coverStyle, "", item.image);
 
     itemEl.innerHTML = `
       <div class="cart-item-img">
@@ -868,7 +1159,7 @@ function updateCartUI() {
       <div class="cart-item-details">
         <span class="cart-item-title">${item.title}</span>
         <span class="cart-item-genres">${item.genres.join(", ")}</span>
-        <span class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</span>
+        <span class="cart-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</span>
       </div>
       <div class="cart-item-actions">
         <button class="quantity-btn dec-qty" data-id="${item.id}">-</button>
@@ -911,15 +1202,15 @@ function updateCartUI() {
     promoMsg.innerHTML = `<i class="fa-solid fa-check"></i> ${rule.msg}`;
     
     discountRow.style.display = "flex";
-    discountValEl.textContent = `-$${discount.toFixed(2)}`;
+    discountValEl.textContent = `-₹${discount.toLocaleString('en-IN')}`;
   } else {
     promoMsg.innerHTML = "";
     discountRow.style.display = "none";
   }
 
   const grandTotal = Math.max(0, subtotal - discount);
-  subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  totalEl.textContent = `$${grandTotal.toFixed(2)}`;
+  subtotalEl.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+  totalEl.textContent = `₹${grandTotal.toLocaleString('en-IN')}`;
 }
 
 function adjustItemQty(gameId, delta) {
@@ -986,7 +1277,7 @@ function openDetailModal(gameId) {
 
   // Cover image container custom rendering
   const visualContainer = document.getElementById("detailVisualContainer");
-  visualContainer.innerHTML = createCardCoverVisual(game.coverStyle, game.title);
+  visualContainer.innerHTML = createCardCoverVisual(game.coverStyle, game.title, game.image);
 
   // Genre tag pills
   const tagsContainer = document.getElementById("detailTags");
@@ -1045,11 +1336,11 @@ function openDetailModal(gameId) {
     currentEl.className = "current";
     if (game.originalPrice > game.price) {
       originalEl.style.display = "inline";
-      originalEl.textContent = `$${game.originalPrice.toFixed(2)}`;
+      originalEl.textContent = `₹${game.originalPrice.toLocaleString('en-IN')}`;
     } else {
       originalEl.style.display = "none";
     }
-    currentEl.textContent = `$${game.price.toFixed(2)}`;
+    currentEl.textContent = `₹${game.price.toLocaleString('en-IN')}`;
   }
 
   // Buy Button status
@@ -1239,6 +1530,7 @@ function processSimulatedOrder() {
       title: item.title,
       key: key,
       coverStyle: item.coverStyle,
+      image: item.image,
       purchaseDate: new Date().toLocaleDateString()
     });
 
@@ -1302,7 +1594,7 @@ function renderLibrary() {
     const cardEl = document.createElement("div");
     cardEl.className = "library-card glass-panel";
 
-    const customVisual = createCardCoverVisual(item.coverStyle, "");
+    const customVisual = createCardCoverVisual(item.coverStyle, "", item.image);
 
     cardEl.innerHTML = `
       <div class="library-card-visual">
@@ -1631,23 +1923,6 @@ function showToast(message, type = "success") {
 // --- DUMMY NEWSLETTER TRIGGERS ---
 // ==========================================
 function setupMiscTriggers() {
-  const heroBuyBtn = document.getElementById("heroBuyBtn");
-  const heroInfoBtn = document.getElementById("heroInfoBtn");
-
-  // Connect Featured hero panel action links
-  if (heroBuyBtn) {
-    heroBuyBtn.addEventListener("click", () => {
-      // Find NEON HORIZON 2088 game ID in data (g1)
-      toggleCartItem("g1");
-    });
-  }
-
-  if (heroInfoBtn) {
-    heroInfoBtn.addEventListener("click", () => {
-      openDetailModal("g1");
-    });
-  }
-
   // Setup Credit Card formatting helper triggers during typing in sandbox
   const ccInput = document.getElementById("cardNumber");
   if (ccInput) {
@@ -1673,6 +1948,51 @@ function setupMiscTriggers() {
       } else {
         e.target.value = val;
       }
+    });
+  }
+}
+
+// ==========================================
+// --- DYNAMIC HERO BANNER SYSTEM ---
+// ==========================================
+function renderHero() {
+  // Cyberpunk 2077 (ID: g3) is our ideal featured banner release
+  const heroGame = GAMES_CATALOG.find(g => g.id === "g3") || GAMES_CATALOG[0];
+  if (!heroGame) return;
+
+  const heroTitle = document.getElementById("heroTitle");
+  const heroDesc = document.getElementById("heroDesc");
+  const heroPrice = document.getElementById("heroPrice");
+  const heroBuyBtn = document.getElementById("heroBuyBtn");
+  const heroInfoBtn = document.getElementById("heroInfoBtn");
+
+  if (heroTitle) heroTitle.textContent = heroGame.title;
+  if (heroDesc) heroDesc.textContent = heroGame.description;
+  if (heroPrice) {
+    heroPrice.textContent = heroGame.price === 0 ? "FREE" : `₹${heroGame.price.toLocaleString('en-IN')}`;
+  }
+
+  const heroVisual = document.getElementById("heroVisual");
+  if (heroVisual && heroGame.image) {
+    heroVisual.style.backgroundImage = `linear-gradient(rgba(11, 7, 30, 0.25), rgba(11, 7, 30, 0.95)), url(${heroGame.image})`;
+    heroVisual.style.backgroundSize = "cover";
+    heroVisual.style.backgroundPosition = "center";
+  }
+
+  if (heroBuyBtn) {
+    // Clone to remove previous listeners
+    const newHeroBuyBtn = heroBuyBtn.cloneNode(true);
+    heroBuyBtn.parentNode.replaceChild(newHeroBuyBtn, heroBuyBtn);
+    newHeroBuyBtn.addEventListener("click", () => {
+      toggleCartItem(heroGame.id);
+    });
+  }
+
+  if (heroInfoBtn) {
+    const newHeroInfoBtn = heroInfoBtn.cloneNode(true);
+    heroInfoBtn.parentNode.replaceChild(newHeroInfoBtn, heroInfoBtn);
+    newHeroInfoBtn.addEventListener("click", () => {
+      openDetailModal(heroGame.id);
     });
   }
 }
