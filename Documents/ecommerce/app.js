@@ -914,6 +914,17 @@ function setupFilters() {
   const sortSelect = document.getElementById("sortSelect");
   const clearBtn = document.getElementById("clearFiltersBtn");
   const emptyClearBtn = document.getElementById("emptyClearFiltersBtn");
+  const filtersToggleBtn = document.getElementById("filtersToggleBtn");
+  const filtersSidebar = document.getElementById("filtersSidebar");
+
+  if (filtersToggleBtn && filtersSidebar) {
+    filtersToggleBtn.addEventListener("click", () => {
+      const isOpen = filtersSidebar.classList.toggle("open");
+      filtersToggleBtn.classList.toggle("active", isOpen);
+      filtersToggleBtn.setAttribute("aria-expanded", String(isOpen));
+      filtersToggleBtn.querySelector("span").textContent = isOpen ? "Hide Filters" : "Show Filters";
+    });
+  }
   
   // Search text input
   searchInput.addEventListener("input", (e) => {

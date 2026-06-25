@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Vortex Games | Next-Gen Online PC Game Store</title>
   <meta name="description" content="Discover and purchase the best online PC games on Vortex. High speed delivery, epic discounts, and immediate access keys.">
   <!-- Stylesheets -->
@@ -74,9 +74,15 @@
 
       <!-- Split Store Grid (Filters Sidebar + Game Grid) -->
       <div class="store-layout">
+
+        <button type="button" class="filters-toggle-btn" id="filtersToggleBtn" aria-expanded="false" aria-controls="filtersSidebar">
+          <i class="fa-solid fa-filter"></i>
+          <span>Show Filters</span>
+          <i class="fa-solid fa-chevron-down filters-toggle-icon"></i>
+        </button>
         
         <!-- Sidebar filters -->
-        <aside class="glass-panel filters-sidebar">
+        <aside class="glass-panel filters-sidebar" id="filtersSidebar">
           
           <!-- Category / Genre Filters -->
           <div class="filter-group">
@@ -176,7 +182,7 @@
     <!-- MY LIBRARY PAGE LAYOUT -->
     <div id="libraryPage" class="library-layout">
       <div class="library-header">
-        <h2 class="gradient-text" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">User Command Center</h2>
+        <h2 class="gradient-text page-title">User Command Center</h2>
         <p style="color: var(--text-secondary);">Access all purchased game serial keys, trigger client downloads, or play arcade releases instantly.</p>
       </div>
 
